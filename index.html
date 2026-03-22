@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Apply for Internship — Peregrine T&C | FYUGP Credit-Eligible</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<style>
+/* ═══ PEREGRINE DESIGN TOKENS ═══════════════════════════════ */
+:root {
+  --ink:         #0a0f0d;
+  --ink-soft:    #111916;
+  --ink-card:    #141c17;
+  --forest:      #0d5e3a;
+  --forest-2:    #0f7045;
+  --gold:        #c9913a;
+  --gold-2:      #e8b05a;
+  --gold-pale:   #f5e8c8;
+  --cream:       #faf6ed;
+  --glass-bg:    rgba(255,255,255,0.055);
+  --glass-bd:    rgba(255,255,255,0.10);
+  --text-hi:     #f2ede4;
+  --text-mid:    #b8b0a0;
+  --text-lo:     #7a7060;
+  --text-muted:  #4a4640;
+  --r-sm:10px; --r-md:16px; --r-lg:22px; --r-xl:32px;
+  --ease-out:    cubic-bezier(0.16,1,0.3,1);
+  --ease-spring: cubic-bezier(0.34,1.56,0.64,1);
+  --font-display:'Cormorant Garamond',Georgia,serif;
+  --font-body:   'Outfit',system-ui,sans-serif;
+}
+/* ═══ RESET ════════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);background:var(--ink);color:var(--text-hi);min-height:100dvh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%;display:block}
+input,select,textarea,button{max-width:100%;box-sizing:border-box;font-family:inherit}
+/* ═══ AURORA BG ════════════════════════════════════════════ */
+body::before{content:'';position:fixed;inset:0;z-index:0;
+  background:radial-gradient(ellipse 80% 55% at 8% 18%,rgba(13,94,58,0.28) 0%,transparent 58%),
+    radial-gradient(ellipse 55% 45% at 88% 12%,rgba(201,145,58,0.14) 0%,transparent 52%),
+    radial-gradient(ellipse 65% 55% at 50% 92%,rgba(13,94,58,0.16) 0%,transparent 58%);
+  animation:aurora 20s ease-in-out infinite alternate;pointer-events:none}
+@keyframes aurora{0%{transform:scale(1) rotate(0deg);opacity:.75}50%{transform:scale(1.05) rotate(.5deg);opacity:1}100%{transform:scale(1.07) rotate(1deg);opacity:.9}}
+body::after{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E")}
+/* ═══ PAGE ROOT ════════════════════════════════════════════ */
+.page-root{position:relative;z-index:2}
+/* ═══ SITE NAV ════════════════════════════════════════════ */
+.site-nav{position:sticky;top:0;z-index:100;background:rgba(10,15,13,0.75);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border-bottom:1px solid rgba(255,255,255,0.07);box-shadow:0 4px 32px rgba(0,0,0,0.4)}
+.nav-inner{max-width:1200px;margin-inline:auto;padding:.875rem clamp(1rem,4vw,2.5rem);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-logo{display:flex;align-items:center;gap:.625rem;text-decoration:none}
+.nav-logo__mark{font-family:var(--font-display);font-size:1.35rem;font-weight:700;color:var(--text-hi);letter-spacing:-.01em;line-height:1}
+.nav-logo__mark span{color:var(--gold);font-style:italic}
+.nav-logo__sub{font-size:.62rem;font-weight:500;color:var(--text-lo);letter-spacing:.1em;text-transform:uppercase;display:block;margin-top:1px}
+.nav-links{display:flex;align-items:center;gap:clamp(.75rem,2vw,1.75rem);list-style:none}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--text-mid);text-decoration:none;letter-spacing:.02em;transition:color .2s;position:relative;padding-bottom:2px}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s var(--ease-out)}
+.nav-links a:hover,.nav-links a[aria-current="page"]{color:var(--gold)}
+.nav-links a:hover::after,.nav-links a[aria-current="page"]::after{width:100%}
+.nav-cta{display:inline-flex;align-items:center;gap:.4em;min-height:38px;padding:.5em 1.25em;border-radius:var(--r-md);background:linear-gradient(135deg,var(--forest),var(--forest-2));color:#fff;font-size:.8rem;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:all .25s var(--ease-out);box-shadow:0 4px 16px rgba(13,94,58,.35);white-space:nowrap}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(13,94,58,.5)}
+@media(max-width:768px){.nav-links{display:none}}
+/* ═══ GLASS CARDS ══════════════════════════════════════════ */
+.glass-card{background:var(--glass-bg);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--glass-bd);box-shadow:0 0 0 1px rgba(255,255,255,0.04) inset,0 24px 64px rgba(0,0,0,.5);border-radius:var(--r-xl)}
+/* ═══ REVEAL ANIM ══════════════════════════════════════════ */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .75s var(--ease-out),transform .75s var(--ease-out)}
+.reveal.in{opacity:1;transform:none}
+/* ═══ PEREGRINE FORM SYSTEM ═════════════════════════════ */
+.pg-form-card{background:rgba(255,255,255,0.04);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.09);border-radius:var(--r-lg);overflow:hidden;position:relative}
+.pg-form-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.pg-form-head{padding:clamp(1.5rem,4vw,2.5rem);border-bottom:1px solid rgba(255,255,255,0.07)}
+.pg-form-head h3{font-family:var(--font-display);font-size:clamp(1.4rem,3vw,2rem);font-weight:700;color:var(--text-hi);letter-spacing:-.01em;margin-bottom:.5rem}
+.pg-form-head p{font-size:.88rem;color:var(--text-mid);line-height:1.7}
+.pg-form-body{padding:clamp(1.5rem,4vw,2.5rem)}
+.pg-section-label{font-size:.65rem;font-weight:700;color:rgba(201,145,58,0.7);letter-spacing:.12em;text-transform:uppercase;margin:1.5rem 0 .875rem;display:flex;align-items:center;gap:.5rem}
+.pg-section-label i{color:var(--gold)}
+.pg-group{margin-bottom:1rem}
+.pg-group label{display:block;font-size:.65rem;font-weight:700;color:var(--text-mid);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.5rem}
+.pg-group .req{color:var(--gold);margin-left:2px}
+.pg-input{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:var(--r-sm);padding:.75rem 1rem;font-size:1rem;color:var(--text-hi);outline:none;transition:border-color .2s,background .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
+.pg-input::placeholder{color:rgba(122,112,96,0.55)}
+.pg-input:focus{border-color:rgba(201,145,58,0.5);background:rgba(201,145,58,0.04);box-shadow:0 0 0 3px rgba(201,145,58,0.1)}
+select.pg-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a7060' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:2.5rem;cursor:pointer}
+select.pg-input option{background:var(--ink-card);color:var(--text-hi)}
+textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
+.pg-form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:480px){.pg-form-row{grid-template-columns:1fr}}
+.pg-msg{display:none;padding:.875rem 1rem;border-radius:var(--r-sm);margin-bottom:1rem;font-size:.85rem;line-height:1.6}
+.pg-msg-err{background:rgba(220,38,38,0.1);border:1px solid rgba(220,38,38,0.25);color:#fca5a5}
+.pg-msg-ok{background:rgba(13,94,58,0.15);border:1px solid rgba(13,94,58,0.4);color:#6dd4a0}
+/* Buttons */
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:52px;padding:.875em clamp(1.5rem,4vw,2.5rem);border-radius:var(--r-md);background:linear-gradient(135deg,var(--forest),var(--forest-2));color:#fff;font-family:var(--font-body);font-size:.95rem;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:all .3s var(--ease-out);box-shadow:0 8px 32px rgba(13,94,58,0.4);letter-spacing:.02em;width:100%}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(13,94,58,0.55)}
+.btn-primary:active{transform:scale(.97)}
+.btn-primary:disabled{opacity:.35;cursor:not-allowed;transform:none}
+/* Spinner */
+.spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,0.3);border-top-color:white;border-radius:50%;animation:spin .7s linear infinite;display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* Section divider */
+.section-divider{display:flex;align-items:center;gap:1rem;margin:clamp(2rem,5vw,4rem) 0 clamp(1.5rem,3vw,2.5rem)}
+.section-divider__line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent)}
+.section-divider__title{font-family:var(--font-display);font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:700;color:var(--text-hi);white-space:nowrap;letter-spacing:-.01em}
+.section-divider__title .accent{color:var(--gold);font-style:italic}
+/* Footer */
+.site-footer{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,0.07);padding:clamp(2rem,5vw,4rem) clamp(1rem,4vw,2.5rem) clamp(1.5rem,3vw,2.5rem)}
+.footer-inner{max-width:1200px;margin-inline:auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.footer-brand{font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--text-hi)}
+.footer-brand span{color:var(--gold);font-style:italic}
+.footer-links{display:flex;gap:1.25rem;flex-wrap:wrap}
+.footer-links a{font-size:.8rem;color:var(--text-lo);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-copy{width:100%;font-size:.72rem;color:var(--text-lo);border-top:1px solid rgba(255,255,255,0.06);padding-top:1.25rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+/* Sticky footer */
+.pg-sticky-footer{position:fixed;bottom:0;left:0;right:0;z-index:200;padding:.75rem 1rem 1rem;background:linear-gradient(to top,var(--ink) 60%,transparent)}
+.pg-sticky-inner{max-width:720px;margin:0 auto}
+/* MOBILE */
+@media(max-width:480px){
+  .pg-sticky-inner{max-width:100%}
+  .section-divider__title{font-size:1.3rem}
+}
+
+/* ── APPLY PAGE SPECIFIC ── */
+.deadline-banner{background:linear-gradient(135deg,rgba(220,38,38,0.85),rgba(185,28,28,0.9));padding:.75rem 1.25rem;text-align:center}
+.deadline-banner p{font-size:.78rem;font-weight:600;color:white;display:flex;align-items:center;justify-content:center;gap:.75rem;flex-wrap:wrap}
+.deadline-banner a{color:var(--gold-2);text-decoration:underline;font-weight:700}
+/* Hero */
+.apply-hero{background:rgba(255,255,255,0.04);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.08);position:relative;overflow:hidden;padding:clamp(2.5rem,6vw,4.5rem) clamp(1.5rem,5vw,3.5rem);text-align:center;margin-bottom:0}
+.apply-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.apply-kicker{display:inline-flex;align-items:center;gap:.5em;background:rgba(220,38,38,0.15);border:1px solid rgba(220,38,38,0.3);border-radius:50px;padding:.35em 1em;font-size:.7rem;font-weight:700;color:#fca5a5;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.25rem}
+.apply-hero h1{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.2rem);font-weight:700;color:var(--text-hi);line-height:1.1;letter-spacing:-.02em;margin-bottom:.875rem}
+.apply-hero h1 em{font-style:italic;color:var(--gold)}
+.apply-hero p{font-size:clamp(.88rem,1.8vw,1.05rem);color:var(--text-mid);max-width:52ch;margin:0 auto 1.75rem;line-height:1.75;font-weight:300}
+.apply-hero p strong{color:var(--text-hi);font-weight:500}
+.perk-pills{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
+.perk-pill{display:flex;align-items:center;gap:.4em;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:50px;padding:.35em .875em;font-size:.72rem;color:var(--text-mid)}
+.perk-pill i{color:var(--gold);font-size:.65rem}
+/* Stats */
+.stats-band{background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.07);border-top:1px solid rgba(255,255,255,0.07)}
+.stats-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.06)}
+.stat-cell{background:rgba(10,15,13,0.97);padding:1rem .75rem;text-align:center}
+.stat-n{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--gold);line-height:1}
+.stat-l{font-size:.6rem;color:var(--text-lo);letter-spacing:.08em;text-transform:uppercase;margin-top:4px}
+@media(max-width:480px){.stats-inner{grid-template-columns:repeat(2,1fr)}}
+/* Main layout */
+.apply-wrap{max-width:780px;margin:0 auto;padding:clamp(1.5rem,4vw,2.5rem) clamp(1rem,4vw,1.5rem) 100px}
+/* Gets grid */
+.gets-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1.5rem}
+.get-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:var(--r-md);padding:1rem 1.125rem;display:flex;align-items:flex-start;gap:.75rem}
+.get-card i{font-size:1.1rem;flex-shrink:0;margin-top:2px}
+.get-card h4{font-size:.85rem;font-weight:600;color:var(--text-hi);margin-bottom:.2rem}
+.get-card p{font-size:.75rem;color:var(--text-lo);line-height:1.5}
+/* Track selector */
+.track-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.625rem;margin-bottom:.5rem}
+.track-opt{background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.09);border-radius:var(--r-md);padding:1rem .75rem;text-align:center;cursor:pointer;transition:all .18s;user-select:none;-webkit-tap-highlight-color:transparent}
+.track-opt:hover{border-color:rgba(201,145,58,0.4);background:rgba(201,145,58,0.06)}
+.track-opt.active{border-color:var(--gold);background:rgba(201,145,58,0.12);box-shadow:0 0 0 3px rgba(201,145,58,0.1)}
+.track-opt i{display:block;font-size:1.25rem;color:var(--text-lo);margin-bottom:.5rem;transition:color .18s}
+.track-opt.active i{color:var(--gold)}
+.track-opt span{font-size:.72rem;font-weight:600;color:var(--text-lo);transition:color .18s}
+.track-opt.active span{color:var(--text-hi)}
+/* Duration */
+.dur-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.5rem}
+.dur-opt{background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.09);border-radius:var(--r-md);padding:1.125rem;cursor:pointer;transition:all .18s;text-align:center;user-select:none;-webkit-tap-highlight-color:transparent}
+.dur-opt:hover{border-color:rgba(255,255,255,0.2)}
+.dur-opt.active{border-color:var(--gold);background:rgba(201,145,58,0.08)}
+.dur-h{font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--text-hi);line-height:1;margin-bottom:.25rem}
+.dur-credits{font-size:.65rem;font-weight:700;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.2rem}
+.dur-desc{font-size:.75rem;color:var(--text-lo)}
+/* Success view */
+.success-view{display:none;background:rgba(13,94,58,0.08);border:1px solid rgba(13,94,58,0.3);border-radius:var(--r-xl);padding:clamp(2.5rem,6vw,4.5rem) clamp(1.5rem,5vw,3rem);text-align:center}
+.success-view h3{font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:var(--text-hi);margin:1rem 0 .75rem}
+.success-view p{font-size:.9rem;color:var(--text-mid);line-height:1.75;margin-bottom:.5rem}
+.success-pill{display:inline-block;background:rgba(13,94,58,0.2);border:1px solid rgba(13,94,58,0.4);color:#6dd4a0;font-weight:600;font-size:.88rem;padding:.625rem 1.5rem;border-radius:50px;margin:1rem 0}
+.next-steps{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:var(--r-lg);padding:1.5rem 1.75rem;margin:1.5rem 0;text-align:left}
+.next-steps h4{font-size:.65rem;font-weight:700;color:var(--text-lo);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem}
+.next-item{display:flex;gap:.875rem;margin-bottom:.875rem}
+.next-item:last-child{margin-bottom:0}
+.next-num{width:24px;height:24px;background:rgba(13,94,58,0.3);border:1px solid rgba(13,94,58,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:#6dd4a0;flex-shrink:0;margin-top:2px}
+.next-item p{font-size:.82rem;color:var(--text-mid);margin:0;line-height:1.6}
+.next-item p strong{color:var(--text-hi)}
+/* Sticky footer */
+.pg-sticky-footer{position:fixed;bottom:0;left:0;right:0;z-index:200;padding:.75rem 1rem 1.25rem;background:linear-gradient(to top,rgba(10,15,13,0.98) 60%,transparent);pointer-events:none}
+.pg-sticky-footer *{pointer-events:auto}
+.pg-sticky-inner{max-width:780px;margin:0 auto}
+/* Mobile */
+@media(max-width:480px){
+  .gets-grid,.track-grid,.dur-row{grid-template-columns:1fr}
+  .track-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="page-root">
+
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="https://www.peregrinehub.com/home" class="nav-logo">
+      <div><span class="nav-logo__mark">Peregrine <span>T&amp;C</span></span><span class="nav-logo__sub">Technologies &amp; Consulting</span></div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="https://www.peregrinehub.com/home">Home</a></li>
+      <li><a href="https://www.peregrinehub.com/courses/peregrine-internship" aria-current="page">Internship</a></li>
+      <li><a href="https://www.peregrinehub.com/peregrine-ai">Peregrine AI</a></li>
+      <li><a href="https://www.peregrinehub.com/reach-us">Contact</a></li>
+    </ul>
+    <a href="https://www.peregrinehub.com/courses/peregrine-internship/apply-as-a-student" class="nav-cta">Apply Now</a>
+  </div>
+</nav>
+
+<div class="deadline-banner" id="deadline-banner">
+  <p><i class="fas fa-clock"></i> FYUGP 4th Semester deadline: <strong>May 25, 2026</strong> — Apply now to secure your slot &nbsp;&middot;&nbsp; <a href="https://www.peregrinehub.com/courses/peregrine-internship">View full details</a></p>
+</div>
+
+<div class="apply-hero">
+  <div style="max-width:680px;margin:0 auto">
+    <p class="apply-kicker"><i class="fas fa-graduation-cap"></i> FYUGP 4th Semester &middot; 2026</p>
+    <h1>Apply for the<br><em>Peregrine Internship</em></h1>
+    <p>A <strong>120-hour, credit-eligible</strong> programme with real project work, a professional portfolio, and a Letter of Recommendation. CUFYUGP 2024 compliant — accepted by all Kerala universities under Calicut University.</p>
+    <div class="perk-pills">
+      <div class="perk-pill"><i class="fas fa-certificate"></i> Certificate</div>
+      <div class="perk-pill"><i class="fas fa-folder-open"></i> Portfolio</div>
+      <div class="perk-pill"><i class="fas fa-envelope-open-text"></i> LOR</div>
+      <div class="perk-pill"><i class="fas fa-briefcase"></i> Placement Support</div>
+      <div class="perk-pill"><i class="fas fa-robot"></i> AI Tool Access</div>
+      <div class="perk-pill"><i class="fas fa-file-alt"></i> CU Documentation Pack</div>
+    </div>
+  </div>
+</div>
+
+<div class="stats-band">
+  <div class="stats-inner">
+    <div class="stat-cell"><div class="stat-n">120h</div><div class="stat-l">Total hours</div></div>
+    <div class="stat-cell"><div class="stat-n">&#x20b9;999</div><div class="stat-l">Programme fee</div></div>
+    <div class="stat-cell"><div class="stat-n">2–4</div><div class="stat-l">Credits</div></div>
+    <div class="stat-cell"><div class="stat-n">May 25</div><div class="stat-l">Deadline</div></div>
+  </div>
+</div>
+
+<div class="apply-wrap">
+
+  <div class="section-divider reveal"><div class="section-divider__line"></div><h2 class="section-divider__title">What You <span class="accent">Receive</span></h2><div class="section-divider__line"></div></div>
+
+  <div class="gets-grid reveal">
+    <div class="get-card"><i class="fas fa-certificate" style="color:var(--gold)"></i><div><h4>Completion Certificate</h4><p>Issued in CU-mandated format with all required fields — accepted for university credit submission</p></div></div>
+    <div class="get-card"><i class="fas fa-folder-open" style="color:var(--forest-2)"></i><div><h4>Professional Portfolio</h4><p>Real deliverables from live projects — not just a report</p></div></div>
+    <div class="get-card"><i class="fas fa-envelope-open-text" style="color:var(--gold-2)"></i><div><h4>Letter of Recommendation</h4><p>Signed by Peregrine Faculty Director — recognised nationally</p></div></div>
+    <div class="get-card"><i class="fas fa-university" style="color:#6dd4a0"></i><div><h4>CU Documentation Pack</h4><p>Attendance sheets, mentor evaluation, and submission records — university-format ready</p></div></div>
+  </div>
+
+  <div class="pg-form-card reveal" id="form-card">
+    <div class="pg-form-head">
+      <h3>Internship Application</h3>
+      <p>Takes 2 minutes. We&#8217;ll confirm your batch within 24 hours and send the full onboarding and CU documentation pack.</p>
+    </div>
+    <div class="pg-form-body">
+
+      <div id="form-msg" class="pg-msg"></div>
+
+      <div class="pg-section-label"><i class="fas fa-layer-group"></i> Choose Your Track <span class="req">*</span></div>
+      <div class="track-grid">
+        <div class="track-opt" data-val="Translation" onclick="pickTrack(this)"><i class="fas fa-language"></i><span>Translation</span></div>
+        <div class="track-opt" data-val="Content Creation" onclick="pickTrack(this)"><i class="fas fa-pen-nib"></i><span>Content Creation</span></div>
+        <div class="track-opt" data-val="Digital Marketing" onclick="pickTrack(this)"><i class="fas fa-bullhorn"></i><span>Digital Marketing</span></div>
+        <div class="track-opt" data-val="Digital Education" onclick="pickTrack(this)"><i class="fas fa-chalkboard-teacher"></i><span>Digital Education</span></div>
+        <div class="track-opt" data-val="IT / Web Dev" onclick="pickTrack(this)"><i class="fas fa-code"></i><span>IT / Web Dev</span></div>
+        <div class="track-opt" data-val="Not sure yet" onclick="pickTrack(this)"><i class="fas fa-question-circle"></i><span>Not Sure Yet</span></div>
+      </div>
+      <input type="hidden" id="f-track">
+
+      <div class="pg-section-label" style="margin-top:1.5rem"><i class="fas fa-clock"></i> Duration &amp; Credits <span class="req">*</span></div>
+      <div class="dur-row">
+        <div class="dur-opt" data-val="60 Hours (2 Credits)" onclick="pickDur(this)">
+          <div class="dur-h">60h</div>
+          <div class="dur-credits">2 Academic Credits</div>
+          <div class="dur-desc">~12 working days &middot; 5 hrs/day</div>
+        </div>
+        <div class="dur-opt" data-val="120 Hours (4 Credits)" onclick="pickDur(this)">
+          <div class="dur-h">120h</div>
+          <div class="dur-credits">4 Academic Credits</div>
+          <div class="dur-desc">~24 working days &middot; full programme</div>
+        </div>
+      </div>
+      <input type="hidden" id="f-duration">
+
+      <div class="pg-section-label" style="margin-top:1.5rem"><i class="fas fa-user"></i> Personal Details</div>
+      <div class="pg-group">
+        <label>Full Name <span class="req">*</span></label>
+        <input id="f-name" type="text" class="pg-input" placeholder="As on your college ID">
+      </div>
+      <div class="pg-form-row">
+        <div class="pg-group">
+          <label>Email Address <span class="req">*</span></label>
+          <input id="f-email" type="email" class="pg-input" placeholder="you@email.com">
+        </div>
+        <div class="pg-group">
+          <label>WhatsApp Number <span class="req">*</span></label>
+          <input id="f-phone" type="tel" class="pg-input" placeholder="+91 9876...">
+        </div>
+      </div>
+
+      <div class="pg-section-label"><i class="fas fa-university"></i> Academic Details</div>
+      
+      <div class="pg-group">
+        <label>College / Institution <span class="req">*</span></label>
+        <select id="f-college" class="pg-input">
+          <option value="">Select your college...</option>
+          <optgroup label="Official MOU Partners">
+            <option value="MES Mampad College (Autonomous)">MES Mampad College (Autonomous)</option>
+            <option value="MES Kalladi College, Mannarkkad">MES Kalladi College, Mannarkkad</option>
+          </optgroup>
+          <optgroup label="Other Institutions">
+            <option value="Other College (Calicut University)">Other (Calicut University Affiliated)</option>
+            <option value="Other College (Kerala/MG/Kannur)">Other (Kerala / MG / Kannur University)</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <div class="pg-form-row">
+        <div class="pg-group">
+          <label>Degree Programme <span class="req">*</span></label>
+          <select id="f-degree" class="pg-input">
+            <option value="">Select your degree...</option>
+            <optgroup label="Arts & Humanities (BA)">
+              <option value="BA Arabic Language & Literature">BA Arabic Language & Literature</option>
+              <option value="BA English Language & Literature">BA English Language & Literature</option>
+              <option value="BA History / Islamic History">BA History / Islamic History</option>
+              <option value="BA Economics / Political Science">BA Economics / Political Science</option>
+              <option value="BA Sociology / Philosophy">BA Sociology / Philosophy</option>
+              <option value="BA Malayalam / Hindi">BA Malayalam / Hindi</option>
+            </optgroup>
+            <optgroup label="Commerce & Management">
+              <option value="BCom (All Specializations)">BCom (All Specializations)</option>
+              <option value="BBA / BCA">BBA / BCA</option>
+            </optgroup>
+            <optgroup label="Other">
+              <option value="B.Voc Programmes">B.Voc Programmes</option>
+              <option value="BSc (Science Programmes)">BSc (Science Programmes)</option>
+              <option value="PG / Masters Programme">PG / Masters Programme</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="pg-group">
+          <label>Current Semester <span class="req">*</span></label>
+          <select id="f-semester" class="pg-input">
+            <option value="">Select semester</option>
+            <option value="4th Semester">4th Semester (FYUGP 2-Credit)</option>
+            <option value="6th Semester">6th Semester</option>
+            <option value="PG / Masters">PG / Masters</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="pg-section-label"><i class="fas fa-plus-circle"></i> Optional</div>
+      <div class="pg-group">
+        <label>LinkedIn / Portfolio URL</label>
+        <input id="f-link" type="url" class="pg-input" placeholder="linkedin.com/in/...">
+      </div>
+      <div class="pg-group">
+        <label>Why do you want this internship?</label>
+        <textarea id="f-why" class="pg-input" placeholder="Brief note about your goals or what you hope to achieve..."></textarea>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="success-view reveal" id="success-view">
+    <div style="font-size:3rem">&#x2705;</div>
+    <h3>Application Received!</h3>
+    <p>Thank you for applying to the <strong>Peregrine Professional Apprenticeship</strong>.</p>
+    <div class="success-pill">&#x2705; Payment confirmed &nbsp;&middot;&nbsp; Batch confirmation within 24 hours</div>
+    <p style="font-size:.82rem">Check your email for the receipt and WhatsApp for your batch confirmation.</p>
+    <div class="next-steps">
+      <h4>What happens next</h4>
+      <div class="next-item"><div class="next-num">1</div><p><strong>Application Review</strong> — We confirm your track, batch slot, and eligibility within 24 hours.</p></div>
+      <div class="next-item"><div class="next-num">2</div><p><strong>Onboarding Pack</strong> — Full syllabus, CU documentation pack, schedule, and logbook template sent to your email.</p></div>
+      <div class="next-item"><div class="next-num">3</div><p><strong>Department Approval</strong> — We provide a pre-filled MOU letter for your Department Council approval.</p></div>
+      <div class="next-item"><div class="next-num">4</div><p><strong>Programme Begins</strong> — Attend orientation, meet your mentor, and start your first project.</p></div>
+    </div>
+    <p style="font-size:.8rem;color:var(--text-lo);border-top:1px solid rgba(255,255,255,0.07);padding-top:1rem;margin-top:1rem">
+      Questions? <a href="https://wa.me/918907887071" style="color:var(--gold)">+91 89078 87071</a> &nbsp;&middot;&nbsp;
+      <a href="https://www.peregrinehub.com/home" target="_blank" style="color:var(--gold)">PeregrineHub.com</a>
+    </p>
+  </div>
+
+</div>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">Peregrine <span>T&amp;C</span></div>
+    <nav class="footer-links">
+      <a href="https://www.peregrinehub.com/privacy-policy">Privacy</a>
+      <a href="https://www.peregrinehub.com/terms-conditions">Terms</a>
+      <a href="https://www.peregrinehub.com/refund-cancellation-policy">Refund</a>
+      <a href="https://www.peregrinehub.com/reach-us">Contact</a>
+    </nav>
+    <div class="footer-copy">
+      <p>&copy; 2026 Peregrine Technologies &amp; Consulting &nbsp;&middot;&nbsp; Mannarkkad, Kerala &nbsp;&middot;&nbsp; <a href="tel:+918907887071" style="color:var(--text-lo);text-decoration:none">+91 89078 87071</a></p>
+      <p>Built with <span style="color:var(--gold)">&#x2665;</span> in Kerala</p>
+    </div>
+  </div>
+</footer>
+</div>
+
+<div class="pg-sticky-footer" id="pg-sticky-footer">
+  <div class="pg-sticky-inner">
+    <button class="btn-primary" id="submit-btn" onclick="submitForm()">
+      <i class="fas fa-lock"></i> Proceed to Secure Payment &mdash; &#x20b9;999
+    </button>
+    <p style="font-size:.68rem;color:var(--text-lo);text-align:center;margin-top:.5rem;display:flex;align-items:center;justify-content:center;gap:.35rem">
+      <i class="fas fa-shield-alt" style="color:var(--gold)"></i> Secured by Razorpay &nbsp;&middot;&nbsp; UPI, Cards, Net Banking accepted
+    </p>
+  </div>
+</div>
+
+<script>
+/* ══ CONFIG ═══════════════════════════════════════════════════════════════
+   1. Replace RZP_KEY_ID with your actual Razorpay Live Key ID (rzp_live_...)
+   2. The payment amount is currently set to 100 paise (₹1) for testing.
+      CHANGE IT BACK TO 99900 BEFORE GOING LIVE!
+   ═══════════════════════════════════════════════════════════════════════ */
+var SHEET_URL  = "https://script.google.com/macros/s/AKfycbxLJZW2swxeC4JR4pA3M1n1FkBJwLgi7xjYaNdB9W7bFul6-VgUhH_uNTZCRrAaPWRE/exec";
+var RZP_KEY_ID = "rzp_live_Rw8XR99SIFnT9a"; 
+var selTrack = "", selDuration = "";
+
+function pickTrack(el){
+  document.querySelectorAll(".track-opt").forEach(function(o){o.classList.remove("active")});
+  el.classList.add("active");
+  selTrack = el.getAttribute("data-val");
+  document.getElementById("f-track").value = selTrack;
+}
+
+function pickDur(el){
+  document.querySelectorAll(".dur-opt").forEach(function(o){o.classList.remove("active")});
+  el.classList.add("active");
+  selDuration = el.getAttribute("data-val");
+  document.getElementById("f-duration").value = selDuration;
+}
+
+function submitForm(){
+  var btn     = document.getElementById("submit-btn");
+  var msgEl   = document.getElementById("form-msg");
+  var name    = document.getElementById("f-name").value.trim();
+  var email   = document.getElementById("f-email").value.trim();
+  var phone   = document.getElementById("f-phone").value.trim();
+  var college = document.getElementById("f-college").value.trim();
+  var degree  = document.getElementById("f-degree").value.trim();
+  var sem     = document.getElementById("f-semester").value;
+  var link    = document.getElementById("f-link").value.trim();
+  var why     = document.getElementById("f-why").value.trim();
+
+  // ── Validate ──────────────────────────────────────────────────────────
+  if(!name || !email || !phone || !college || !degree || !sem || !selTrack || !selDuration){
+    msgEl.className = "pg-msg pg-msg-err"; msgEl.style.display = "block";
+    msgEl.innerHTML = "<i class='fas fa-exclamation-circle'></i>&nbsp; Please fill all required fields and select a track and duration.";
+    msgEl.scrollIntoView({behavior:"smooth",block:"center"});
+    return;
+  }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    msgEl.className = "pg-msg pg-msg-err"; msgEl.style.display = "block";
+    msgEl.innerHTML = "<i class='fas fa-exclamation-circle'></i>&nbsp; Please enter a valid email address.";
+    return;
+  }
+  var phoneClean = phone.replace(/[\s\-\(\)]/g,"");
+  if(!/^(\+91)?[6-9]\d{9}$/.test(phoneClean) && !/^\+[1-9]\d{7,14}$/.test(phoneClean)){
+    msgEl.className = "pg-msg pg-msg-err"; msgEl.style.display = "block";
+    msgEl.innerHTML = "<i class='fas fa-exclamation-circle'></i>&nbsp; Please enter a valid Indian mobile number.";
+    return;
+  }
+
+  msgEl.style.display = "none";
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>&nbsp; Opening Secure Payment...';
+
+  // ── Prepare Data (BUT DO NOT SEND YET) ───────────────────────────────
+  var appData = {
+    organisation: college,
+    sector:       "Internship Applicant — " + selTrack,
+    contact:      name,
+    email:        email,
+    phone:        phoneClean,
+    service:      "[INTERNSHIP] " + selDuration + " | " + selTrack,
+    roles:        "Degree:" + degree + " | Sem:" + sem +
+                  (link ? " | Portfolio:" + link : "") +
+                  (why  ? " | Why:" + why.slice(0,200) : "")
+  };
+
+  // ── Open Razorpay Checkout Popup ─────────────────────────────────────
+  var options = {
+    "key": RZP_KEY_ID, 
+    "amount": 100, // <--- SET TO 100 PAISE (₹1) FOR TESTING!
+    "currency": "INR",
+    "name": "Peregrine T&C",
+    "description": "Professional Apprenticeship - " + selTrack,
+    "image": "https://www.peregrinehub.com/favicon.ico", 
+    "handler": function (response) {
+        // This runs instantly ONLY when payment succeeds!
+        btn.innerHTML = '<span class="spinner"></span>&nbsp; Confirming Enrollment...';
+        handleSuccess(response.razorpay_payment_id, appData);
+    },
+    "prefill": {
+        "name": name,
+        "email": email,
+        "contact": phoneClean
+    },
+    "theme": {
+        "color": "#0d5e3a" 
+    },
+    "modal": {
+        "ondismiss": function(){
+            // User closed popup without paying - NO DATA IS SENT
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-lock"></i> Proceed to Secure Payment &mdash; &#x20b9;1 (Test)';
+            msgEl.className = "pg-msg pg-msg-err"; msgEl.style.display = "block";
+            msgEl.innerHTML = "<i class='fas fa-exclamation-circle'></i>&nbsp; Payment was cancelled. Your application was not submitted.";
+        }
+    }
+  };
+  
+  var rzp1 = new Razorpay(options);
+  rzp1.open();
+}
+
+function handleSuccess(paymentId, appData) {
+  // NOW we tag it as confirmed and attach the Payment ID
+  appData.service = "[INTERNSHIP-CONFIRMED] " + appData.service;
+  appData.roles = appData.roles + " | PayID:" + paymentId;
+  
+  // Fire update to Google Sheets (which triggers your Email script)
+  fetch(SHEET_URL, {
+    method: "POST", mode: "no-cors",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(appData)
+  }).then(() => {
+      // Switch UI to success screen immediately
+      var fc = document.getElementById("form-card");
+      var sv = document.getElementById("success-view");
+      var sf = document.getElementById("pg-sticky-footer");
+      var db = document.getElementById("deadline-banner");
+      
+      if(fc) fc.style.display = "none";
+      if(sf) sf.style.display = "none";
+      if(db) db.style.display = "none";
+      
+      if(sv){
+        sv.style.display = "block";
+        setTimeout(function(){ sv.scrollIntoView({behavior:"smooth",block:"start"}); },150);
+      }
+  }).catch(function(){});
+}
+
+// Scroll reveal
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+  },{threshold:0.07});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
