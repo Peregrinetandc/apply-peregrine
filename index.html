@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Apply for Internship — Peregrine T&C | FYUGP Credit-Eligible</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <style>
@@ -36,9 +35,9 @@
   --font-body:   'Outfit',system-ui,sans-serif;
 }
 /* ═══ RESET ════════════════════════════════════════════════ */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
-body{font-family:var(--font-body);background:var(--ink);color:var(--text-hi);min-height:100dvh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-body);background:var(--ink);color:var(--text-hi);min-height:100dvh;overflow-x:hidden;-webkit-font-smoothing:antialiased;touch-action: manipulation;}
 img,svg{max-width:100%;display:block}
 input,select,textarea,button{max-width:100%;box-sizing:border-box;font-family:inherit}
 /* ═══ AURORA BG ════════════════════════════════════════════ */
@@ -96,7 +95,7 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
 .pg-msg-err{background:rgba(220,38,38,0.1);border:1px solid rgba(220,38,38,0.25);color:#fca5a5}
 .pg-msg-ok{background:rgba(13,94,58,0.15);border:1px solid rgba(13,94,58,0.4);color:#6dd4a0}
 /* Buttons */
-.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:52px;padding:.875em clamp(1.5rem,4vw,2.5rem);border-radius:var(--r-md);background:linear-gradient(135deg,var(--forest),var(--forest-2));color:#fff;font-family:var(--font-body);font-size:.95rem;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:all .3s var(--ease-out);box-shadow:0 8px 32px rgba(13,94,58,0.4);letter-spacing:.02em;width:100%}
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:52px;padding:.875em clamp(1.5rem,4vw,2.5rem);border-radius:var(--r-md);background:linear-gradient(135deg,var(--forest),var(--forest-2));color:#fff;font-family:var(--font-body);font-size:.95rem;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:all .3s var(--ease-out);box-shadow:0 8px 32px rgba(13,94,58,0.4);letter-spacing:.02em;width:100%;touch-action: manipulation;}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(13,94,58,0.55)}
 .btn-primary:active{transform:scale(.97)}
 .btn-primary:disabled{opacity:.35;cursor:not-allowed;transform:none}
@@ -158,7 +157,7 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
 .get-card p{font-size:.75rem;color:var(--text-lo);line-height:1.5}
 /* Track selector */
 .track-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.625rem;margin-bottom:.5rem}
-.track-opt{background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.09);border-radius:var(--r-md);padding:1rem .75rem;text-align:center;cursor:pointer;transition:all .18s;user-select:none;-webkit-tap-highlight-color:transparent}
+.track-opt{background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.09);border-radius:var(--r-md);padding:1rem .75rem;text-align:center;cursor:pointer;transition:all .18s;user-select:none;touch-action: manipulation;}
 .track-opt:hover{border-color:rgba(201,145,58,0.4);background:rgba(201,145,58,0.06)}
 .track-opt.active{border-color:var(--gold);background:rgba(201,145,58,0.12);box-shadow:0 0 0 3px rgba(201,145,58,0.1)}
 .track-opt i{display:block;font-size:1.25rem;color:var(--text-lo);margin-bottom:.5rem;transition:color .18s}
@@ -167,7 +166,7 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
 .track-opt.active span{color:var(--text-hi)}
 /* Duration */
 .dur-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.5rem}
-.dur-opt{background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.09);border-radius:var(--r-md);padding:1.125rem;cursor:pointer;transition:all .18s;text-align:center;user-select:none;-webkit-tap-highlight-color:transparent}
+.dur-opt{background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.09);border-radius:var(--r-md);padding:1.125rem;cursor:pointer;transition:all .18s;text-align:center;user-select:none;touch-action: manipulation;}
 .dur-opt:hover{border-color:rgba(255,255,255,0.2)}
 .dur-opt.active{border-color:var(--gold);background:rgba(201,145,58,0.08)}
 .dur-h{font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--text-hi);line-height:1;margin-bottom:.25rem}
@@ -266,23 +265,25 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
 
       <div class="pg-section-label"><i class="fas fa-layer-group"></i> Choose Your Track <span class="req">*</span></div>
       <div class="track-grid">
-        <div class="track-opt" data-val="Translation" onclick="pickTrack(this)"><i class="fas fa-language"></i><span>Translation</span></div>
-        <div class="track-opt" data-val="Content Creation" onclick="pickTrack(this)"><i class="fas fa-pen-nib"></i><span>Content Creation</span></div>
-        <div class="track-opt" data-val="Digital Marketing" onclick="pickTrack(this)"><i class="fas fa-bullhorn"></i><span>Digital Marketing</span></div>
-        <div class="track-opt" data-val="Digital Education" onclick="pickTrack(this)"><i class="fas fa-chalkboard-teacher"></i><span>Digital Education</span></div>
-        <div class="track-opt" data-val="IT / Web Dev" onclick="pickTrack(this)"><i class="fas fa-code"></i><span>IT / Web Dev</span></div>
-        <div class="track-opt" data-val="Not sure yet" onclick="pickTrack(this)"><i class="fas fa-question-circle"></i><span>Not Sure Yet</span></div>
+        <div class="track-opt" data-val="Translation" data-track="translation"><i class="fas fa-language"></i><span>Translation</span></div>
+        <div class="track-opt" data-val="Content Creation" data-track="content"><i class="fas fa-pen-nib"></i><span>Content Creation</span></div>
+        <div class="track-opt" data-val="Digital Marketing" data-track="marketing"><i class="fas fa-bullhorn"></i><span>Digital Marketing</span></div>
+        <div class="track-opt" data-val="Digital Education" data-track="education"><i class="fas fa-chalkboard-teacher"></i><span>Digital Education</span></div>
+        <div class="track-opt" data-val="IT / Web Dev" data-track="webdev"><i class="fas fa-code"></i><span>IT / Web Dev</span></div>
+        <div class="track-opt" data-val="Arabic Studies" data-track="arabic"><i class="fas fa-book-open"></i><span>Arabic Studies</span></div>
+        <div class="track-opt" data-val="Islamic History" data-track="history"><i class="fas fa-mosque"></i><span>Islamic History</span></div>
+        <div class="track-opt" data-val="Not sure yet" data-track="unsure"><i class="fas fa-question-circle"></i><span>Not Sure Yet</span></div>
       </div>
       <input type="hidden" id="f-track">
 
       <div class="pg-section-label" style="margin-top:1.5rem"><i class="fas fa-clock"></i> Duration &amp; Credits <span class="req">*</span></div>
       <div class="dur-row">
-        <div class="dur-opt" data-val="60 Hours (2 Credits)" onclick="pickDur(this)">
+        <div class="dur-opt" data-val="60 Hours (2 Credits)" data-dur="60">
           <div class="dur-h">60h</div>
           <div class="dur-credits">2 Academic Credits</div>
           <div class="dur-desc">~12 working days &middot; 5 hrs/day</div>
         </div>
-        <div class="dur-opt" data-val="120 Hours (4 Credits)" onclick="pickDur(this)">
+        <div class="dur-opt" data-val="120 Hours (4 Credits)" data-dur="120">
           <div class="dur-h">120h</div>
           <div class="dur-credits">4 Academic Credits</div>
           <div class="dur-desc">~24 working days &middot; full programme</div>
@@ -376,13 +377,13 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
     <h3>Application Received!</h3>
     <p>Thank you for applying to the <strong>Peregrine Professional Apprenticeship</strong>.</p>
     <div class="success-pill">&#x2705; Payment confirmed &nbsp;&middot;&nbsp; Batch confirmation within 24 hours</div>
-    <p style="font-size:.82rem">Check your email for the receipt and WhatsApp for your batch confirmation.</p>
+    <p style="font-size:.82rem">Check your email for confirmation (including LMS login details) and WhatsApp for batch assignment.</p>
     <div class="next-steps">
       <h4>What happens next</h4>
-      <div class="next-item"><div class="next-num">1</div><p><strong>Application Review</strong> — We confirm your track, batch slot, and eligibility within 24 hours.</p></div>
-      <div class="next-item"><div class="next-num">2</div><p><strong>Onboarding Pack</strong> — Full syllabus, CU documentation pack, schedule, and logbook template sent to your email.</p></div>
-      <div class="next-item"><div class="next-num">3</div><p><strong>Department Approval</strong> — We provide a pre-filled MOU letter for your Department Council approval.</p></div>
-      <div class="next-item"><div class="next-num">4</div><p><strong>Programme Begins</strong> — Attend orientation, meet your mentor, and start your first project.</p></div>
+      <div class="next-item"><div class="next-num">1</div><p><strong>Email Confirmation</strong> — Instant payment receipt + LMS access credentials sent to your email.</p></div>
+      <div class="next-item"><div class="next-num">2</div><p><strong>LMS Access</strong> — Login immediately at learn.peregrineacademy.in with your email address.</p></div>
+      <div class="next-item"><div class="next-num">3</div><p><strong>Onboarding Pack</strong> — Full syllabus, CU documentation, schedule, and logbook within 24 hours.</p></div>
+      <div class="next-item"><div class="next-num">4</div><p><strong>Programme Begins</strong> — Attend orientation, meet your mentor, start Week 1 tasks.</p></div>
     </div>
     <p style="font-size:.8rem;color:var(--text-lo);border-top:1px solid rgba(255,255,255,0.07);padding-top:1rem;margin-top:1rem">
       Questions? <a href="https://wa.me/918907887071" style="color:var(--gold)">+91 89078 87071</a> &nbsp;&middot;&nbsp;
@@ -411,7 +412,7 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
 
 <div class="pg-sticky-footer" id="pg-sticky-footer">
   <div class="pg-sticky-inner">
-    <button class="btn-primary" id="submit-btn" onclick="submitForm()">
+    <button class="btn-primary" id="submit-btn">
       <i class="fas fa-lock"></i> Proceed to Secure Payment &mdash; &#x20b9;999
     </button>
     <p style="font-size:.68rem;color:var(--text-lo);text-align:center;margin-top:.5rem;display:flex;align-items:center;justify-content:center;gap:.35rem">
@@ -421,57 +422,113 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
 </div>
 
 <script>
-/* ══ CONFIG ═══════════════════════════════════════════════════════════════
-   1. Replace RZP_KEY_ID with your actual Razorpay Live Key ID (rzp_live_...)
-   2. The payment amount is currently set to 100 paise (₹1) for testing.
-      CHANGE IT BACK TO 99900 BEFORE GOING LIVE!
-   ═══════════════════════════════════════════════════════════════════════ */
-var SHEET_URL  = "https://script.google.com/macros/s/AKfycbxLJZW2swxeC4JR4pA3M1n1FkBJwLgi7xjYaNdB9W7bFul6-VgUhH_uNTZCRrAaPWRE/exec";
-var RZP_KEY_ID = "rzp_live_Rw8XR99SIFnT9a"; 
-var selTrack = "", selDuration = "";
+/* ══════════════════════════════════════════════════════════════════════════
+   PEREGRINE INTERNSHIP APPLICATION - PERFECTLY ALIGNED WITH BACKEND v2.1
+   ══════════════════════════════════════════════════════════════════════════
+   
+   📌 CRITICAL CONFIGURATION - UPDATE BEFORE DEPLOYING:
+   
+   1. SHEET_URL: Your Registration Script Web App URL (v2.1-LMS-Integrated)
+      ⚠️ MUST UPDATE: Replace with your actual deployed script URL
+      Format: https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec
+      
+   2. PAYMENT_AMOUNT: Currently ₹999 (production)
+      Testing: Change to 100 (₹1)
+      Production: Keep at 99900 (₹999)
+   
+   ══════════════════════════════════════════════════════════════════════════ */
 
-function pickTrack(el){
-  document.querySelectorAll(".track-opt").forEach(function(o){o.classList.remove("active")});
+var SHEET_URL  = "https://script.google.com/macros/s/AKfycbytz9mtPJjPNzRwHsufMihy4Cpp4k-dh0KQh2X2MpN5GO-u-TYwDoIQTd03-k743Zuu/exec"; // ⚠️ UPDATE THIS!
+var RZP_KEY_ID = "rzp_live_Rw8XR99SIFnT9a"; 
+var PAYMENT_AMOUNT = 99900; // ₹999 = 99900 paise (change to 100 for testing)
+
+var selTrack = "", selDuration = "";
+var razorpayInstance = null;
+
+// ══════════════════════════════════════════════════════════════════════════
+//  TRACK & DURATION SELECTION (Mobile-Optimized Touch Support)
+// ══════════════════════════════════════════════════════════════════════════
+
+function pickTrack(el) {
+  document.querySelectorAll(".track-opt").forEach(function(o) {
+    o.classList.remove("active");
+  });
+  
   el.classList.add("active");
   selTrack = el.getAttribute("data-val");
   document.getElementById("f-track").value = selTrack;
+  
+  // Visual feedback for mobile
+  el.style.transform = "scale(0.98)";
+  setTimeout(function() {
+    el.style.transform = "";
+  }, 100);
 }
 
-function pickDur(el){
-  document.querySelectorAll(".dur-opt").forEach(function(o){o.classList.remove("active")});
+function pickDur(el) {
+  document.querySelectorAll(".dur-opt").forEach(function(o) {
+    o.classList.remove("active");
+  });
+  
   el.classList.add("active");
   selDuration = el.getAttribute("data-val");
   document.getElementById("f-duration").value = selDuration;
+  
+  // Visual feedback for mobile
+  el.style.transform = "scale(0.98)";
+  setTimeout(function() {
+    el.style.transform = "";
+  }, 100);
 }
 
-function submitForm(){
-  var btn     = document.getElementById("submit-btn");
-  var msgEl   = document.getElementById("form-msg");
-  var name    = document.getElementById("f-name").value.trim();
-  var email   = document.getElementById("f-email").value.trim();
-  var phone   = document.getElementById("f-phone").value.trim();
-  var college = document.getElementById("f-college").value.trim();
-  var degree  = document.getElementById("f-degree").value.trim();
-  var sem     = document.getElementById("f-semester").value;
-  var link    = document.getElementById("f-link").value.trim();
-  var why     = document.getElementById("f-why").value.trim();
+// ══════════════════════════════════════════════════════════════════════════
+//  FORM VALIDATION
+// ══════════════════════════════════════════════════════════════════════════
 
-  // ── Validate ──────────────────────────────────────────────────────────
-  if(!name || !email || !phone || !college || !degree || !sem || !selTrack || !selDuration){
-    msgEl.className = "pg-msg pg-msg-err"; msgEl.style.display = "block";
-    msgEl.innerHTML = "<i class='fas fa-exclamation-circle'></i>&nbsp; Please fill all required fields and select a track and duration.";
-    msgEl.scrollIntoView({behavior:"smooth",block:"center"});
-    return;
+function validateForm() {
+  var msgEl = document.getElementById("form-msg");
+  var name = document.getElementById("f-name").value.trim();
+  var email = document.getElementById("f-email").value.trim();
+  var phone = document.getElementById("f-phone").value.trim();
+  var college = document.getElementById("f-college").value.trim();
+  var degree = document.getElementById("f-degree").value.trim();
+  var sem = document.getElementById("f-semester").value;
+
+  if (!name || !email || !phone || !college || !degree || !sem || !selTrack || !selDuration) {
+    showError(msgEl, "Please fill all required fields and select a track and duration.");
+    return false;
   }
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-    msgEl.className = "pg-msg pg-msg-err"; msgEl.style.display = "block";
-    msgEl.innerHTML = "<i class='fas fa-exclamation-circle'></i>&nbsp; Please enter a valid email address.";
-    return;
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showError(msgEl, "Please enter a valid email address.");
+    return false;
   }
-  var phoneClean = phone.replace(/[\s\-\(\)]/g,"");
-  if(!/^(\+91)?[6-9]\d{9}$/.test(phoneClean) && !/^\+[1-9]\d{7,14}$/.test(phoneClean)){
-    msgEl.className = "pg-msg pg-msg-err"; msgEl.style.display = "block";
-    msgEl.innerHTML = "<i class='fas fa-exclamation-circle'></i>&nbsp; Please enter a valid Indian mobile number.";
+
+  var phoneClean = phone.replace(/[\s\-\(\)]/g, "");
+  if (!/^(\+91)?[6-9]\d{9}$/.test(phoneClean) && !/^\+[1-9]\d{7,14}$/.test(phoneClean)) {
+    showError(msgEl, "Please enter a valid mobile number.");
+    return false;
+  }
+
+  return true;
+}
+
+function showError(msgEl, message) {
+  msgEl.className = "pg-msg pg-msg-err";
+  msgEl.style.display = "block";
+  msgEl.innerHTML = "<i class='fas fa-exclamation-circle'></i>&nbsp; " + message;
+  msgEl.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  MAIN SUBMIT FUNCTION
+// ══════════════════════════════════════════════════════════════════════════
+
+function submitForm() {
+  var btn = document.getElementById("submit-btn");
+  var msgEl = document.getElementById("form-msg");
+
+  if (!validateForm()) {
     return;
   }
 
@@ -479,90 +536,222 @@ function submitForm(){
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span>&nbsp; Opening Secure Payment...';
 
-  // ── Prepare Data (BUT DO NOT SEND YET) ───────────────────────────────
+  // Gather form data
+  var name = document.getElementById("f-name").value.trim();
+  var email = document.getElementById("f-email").value.trim();
+  var phone = document.getElementById("f-phone").value.trim().replace(/[\s\-\(\)]/g, "");
+  var college = document.getElementById("f-college").value.trim();
+  var degree = document.getElementById("f-degree").value.trim();
+  var sem = document.getElementById("f-semester").value;
+  var link = document.getElementById("f-link").value.trim();
+  var why = document.getElementById("f-why").value.trim();
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     BACKEND ALIGNMENT: Service field format
+     
+     BEFORE payment: "60 Hours (2 Credits) | Translation" (NO prefix)
+     AFTER payment:  "[INTERNSHIP-CONFIRMED] 60 Hours (2 Credits) | Translation"
+     
+     Backend expects this EXACT format for proper parsing and LMS provisioning
+     ═══════════════════════════════════════════════════════════════════════ */
+
   var appData = {
     organisation: college,
-    sector:       "Internship Applicant — " + selTrack,
-    contact:      name,
-    email:        email,
-    phone:        phoneClean,
-    service:      "[INTERNSHIP] " + selDuration + " | " + selTrack,
-    roles:        "Degree:" + degree + " | Sem:" + sem +
-                  (link ? " | Portfolio:" + link : "") +
-                  (why  ? " | Why:" + why.slice(0,200) : "")
+    sector: "Internship Applicant — " + selTrack,
+    contact: name,
+    email: email,
+    phone: phone,
+    service: selDuration + " | " + selTrack,  // Clean format, NO prefix yet
+    roles: "Degree:" + degree + " | Sem:" + sem +
+      (link ? " | Portfolio:" + link : "") +
+      (why ? " | Why:" + why.slice(0, 200) : "")
   };
 
-  // ── Open Razorpay Checkout Popup ─────────────────────────────────────
+  try {
+    openRazorpay(appData, btn, msgEl);
+  } catch (error) {
+    console.error("Razorpay error:", error);
+    showError(msgEl, "Payment gateway error. Please try again or contact support.");
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fas fa-lock"></i> Proceed to Secure Payment &mdash; &#x20b9;999';
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  RAZORPAY PAYMENT HANDLER
+// ══════════════════════════════════════════════════════════════════════════
+
+function openRazorpay(appData, btn, msgEl) {
   var options = {
-    "key": RZP_KEY_ID, 
-    "amount": 100, // <--- SET TO 100 PAISE (₹1) FOR TESTING!
+    "key": RZP_KEY_ID,
+    "amount": PAYMENT_AMOUNT,
     "currency": "INR",
     "name": "Peregrine T&C",
     "description": "Professional Apprenticeship - " + selTrack,
-    "image": "https://www.peregrinehub.com/favicon.ico", 
-    "handler": function (response) {
-        // This runs instantly ONLY when payment succeeds!
-        btn.innerHTML = '<span class="spinner"></span>&nbsp; Confirming Enrollment...';
-        handleSuccess(response.razorpay_payment_id, appData);
+    "image": "https://www.peregrinehub.com/favicon.ico",
+    "handler": function(response) {
+      btn.innerHTML = '<span class="spinner"></span>&nbsp; Confirming Enrollment...';
+      handlePaymentSuccess(response.razorpay_payment_id, appData);
     },
     "prefill": {
-        "name": name,
-        "email": email,
-        "contact": phoneClean
+      "name": appData.contact,
+      "email": appData.email,
+      "contact": appData.phone
     },
     "theme": {
-        "color": "#0d5e3a" 
+      "color": "#0d5e3a"
     },
     "modal": {
-        "ondismiss": function(){
-            // User closed popup without paying - NO DATA IS SENT
-            btn.disabled = false;
-            btn.innerHTML = '<i class="fas fa-lock"></i> Proceed to Secure Payment &mdash; &#x20b9;1 (Test)';
-            msgEl.className = "pg-msg pg-msg-err"; msgEl.style.display = "block";
-            msgEl.innerHTML = "<i class='fas fa-exclamation-circle'></i>&nbsp; Payment was cancelled. Your application was not submitted.";
-        }
-    }
+      "ondismiss": function() {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-lock"></i> Proceed to Secure Payment &mdash; &#x20b9;999';
+        showError(msgEl, "Payment was cancelled. Your application was not submitted.");
+      },
+      "escape": true,
+      "backdropclose": false
+    },
+    "retry": {
+      "enabled": true,
+      "max_count": 3
+    },
+    "timeout": 900,
+    "remember_customer": false
   };
+
+  razorpayInstance = new Razorpay(options);
   
-  var rzp1 = new Razorpay(options);
-  rzp1.open();
+  razorpayInstance.on('payment.failed', function(response) {
+    console.error("Payment failed:", response.error);
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fas fa-lock"></i> Proceed to Secure Payment &mdash; &#x20b9;999';
+    
+    var errorMsg = "Payment failed. ";
+    if (response.error.description) {
+      errorMsg += response.error.description;
+    } else {
+      errorMsg += "Please try again or contact support.";
+    }
+    showError(msgEl, errorMsg);
+  });
+
+  razorpayInstance.open();
 }
 
-function handleSuccess(paymentId, appData) {
-  // NOW we tag it as confirmed and attach the Payment ID
+// ══════════════════════════════════════════════════════════════════════════
+//  PAYMENT SUCCESS HANDLER
+// ══════════════════════════════════════════════════════════════════════════
+
+function handlePaymentSuccess(paymentId, appData) {
+  /* ═══════════════════════════════════════════════════════════════════════
+     BACKEND ALIGNMENT: Add confirmation prefix ONLY after payment success
+     
+     This creates: "[INTERNSHIP-CONFIRMED] 60 Hours (2 Credits) | Translation"
+     
+     Backend will:
+     1. Detect [INTERNSHIP-CONFIRMED] tag
+     2. Parse track and duration from service field
+     3. Extract PayID from roles field
+     4. Set status = "Confirmed"
+     5. Call Academy LMS API for automatic provisioning
+     6. Send confirmation + LMS welcome emails
+     ═══════════════════════════════════════════════════════════════════════ */
+
   appData.service = "[INTERNSHIP-CONFIRMED] " + appData.service;
   appData.roles = appData.roles + " | PayID:" + paymentId;
-  
-  // Fire update to Google Sheets (which triggers your Email script)
+
+  // Send to Registration Script (triggers full backend flow + LMS provisioning)
   fetch(SHEET_URL, {
-    method: "POST", mode: "no-cors",
-    headers: {"Content-Type": "application/json"},
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(appData)
-  }).then(() => {
-      // Switch UI to success screen immediately
-      var fc = document.getElementById("form-card");
-      var sv = document.getElementById("success-view");
-      var sf = document.getElementById("pg-sticky-footer");
-      var db = document.getElementById("deadline-banner");
-      
-      if(fc) fc.style.display = "none";
-      if(sf) sf.style.display = "none";
-      if(db) db.style.display = "none";
-      
-      if(sv){
-        sv.style.display = "block";
-        setTimeout(function(){ sv.scrollIntoView({behavior:"smooth",block:"start"}); },150);
-      }
-  }).catch(function(){});
+  })
+  .then(function() {
+    showSuccessView();
+  })
+  .catch(function(error) {
+    console.error("Sheet update error:", error);
+    // Still show success since payment went through
+    showSuccessView();
+  });
 }
 
-// Scroll reveal
-(function(){
-  var els=document.querySelectorAll('.reveal');
-  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
-  },{threshold:0.07});
-  els.forEach(function(e){io.observe(e)});
+// ══════════════════════════════════════════════════════════════════════════
+//  SUCCESS VIEW
+// ══════════════════════════════════════════════════════════════════════════
+
+function showSuccessView() {
+  var formCard = document.getElementById("form-card");
+  var successView = document.getElementById("success-view");
+  var stickyFooter = document.getElementById("pg-sticky-footer");
+  var deadlineBanner = document.getElementById("deadline-banner");
+
+  if (formCard) formCard.style.display = "none";
+  if (stickyFooter) stickyFooter.style.display = "none";
+  if (deadlineBanner) deadlineBanner.style.display = "none";
+
+  if (successView) {
+    successView.style.display = "block";
+    setTimeout(function() {
+      successView.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 150);
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  EVENT LISTENERS (Mobile-Optimized)
+// ══════════════════════════════════════════════════════════════════════════
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Track selection
+  document.querySelectorAll('.track-opt').forEach(function(el) {
+    el.addEventListener('click', function() { pickTrack(this); });
+    el.addEventListener('touchend', function(e) { 
+      e.preventDefault(); 
+      pickTrack(this); 
+    });
+  });
+
+  // Duration selection
+  document.querySelectorAll('.dur-opt').forEach(function(el) {
+    el.addEventListener('click', function() { pickDur(this); });
+    el.addEventListener('touchend', function(e) { 
+      e.preventDefault(); 
+      pickDur(this); 
+    });
+  });
+
+  // Submit button
+  var submitBtn = document.getElementById('submit-btn');
+  if (submitBtn) {
+    submitBtn.addEventListener('click', submitForm);
+    submitBtn.addEventListener('touchend', function(e) { 
+      e.preventDefault(); 
+      submitForm(); 
+    });
+  }
+});
+
+// ══════════════════════════════════════════════════════════════════════════
+//  SCROLL REVEAL ANIMATION
+// ══════════════════════════════════════════════════════════════════════════
+
+(function() {
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function(e) { e.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.07 });
+  els.forEach(function(e) { io.observe(e); });
 })();
 </script>
+</body>
+</html>
