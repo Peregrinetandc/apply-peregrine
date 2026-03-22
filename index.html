@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Apply for Internship — Peregrine T&C | FYUGP Credit-Eligible</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <style>
@@ -95,7 +96,7 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
 .pg-msg-err{background:rgba(220,38,38,0.1);border:1px solid rgba(220,38,38,0.25);color:#fca5a5}
 .pg-msg-ok{background:rgba(13,94,58,0.15);border:1px solid rgba(13,94,58,0.4);color:#6dd4a0}
 /* Buttons */
-.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:52px;padding:.875em clamp(1.5rem,4vw,2.5rem);border-radius:var(--r-md);background:linear-gradient(135deg,var(--forest),var(--forest-2));color:#fff;font-family:var(--font-body);font-size:.95rem;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:all .3s var(--ease-out);box-shadow:0 8px 32px rgba(13,94,58,0.4);letter-spacing:.02em;width:100%;touch-action: manipulation;}
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:52px;padding:.875em clamp(1.5rem,4vw,2.5rem);border-radius:var(--r-md);background:linear-gradient(135deg,var(--forest),var(--forest-2));color:#fff;font-family:var(--font-body);font-size:.95rem;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:all .3s var(--ease-out);box-shadow:0 8px 32px rgba(13,94,58,0.4);letter-spacing:.02em;width:100%}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(13,94,58,0.55)}
 .btn-primary:active{transform:scale(.97)}
 .btn-primary:disabled{opacity:.35;cursor:not-allowed;transform:none}
@@ -117,12 +118,13 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
 .footer-links a:hover{color:var(--gold)}
 .footer-copy{width:100%;font-size:.72rem;color:var(--text-lo);border-top:1px solid rgba(255,255,255,0.06);padding-top:1.25rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
 /* Sticky footer */
-.pg-sticky-footer{position:fixed;bottom:0;left:0;right:0;z-index:200;padding:.75rem 1rem 1rem;background:linear-gradient(to top,var(--ink) 60%,transparent)}
-.pg-sticky-inner{max-width:720px;margin:0 auto}
-/* MOBILE */
+.pg-sticky-footer{position:fixed;bottom:0;left:0;right:0;z-index:200;padding:.75rem 1rem 1.25rem;background:linear-gradient(to top,rgba(10,15,13,0.98) 60%,transparent);pointer-events:none}
+.pg-sticky-footer *{pointer-events:auto}
+.pg-sticky-inner{max-width:780px;margin:0 auto}
+/* Mobile */
 @media(max-width:480px){
-  .pg-sticky-inner{max-width:100%}
-  .section-divider__title{font-size:1.3rem}
+  .gets-grid,.track-grid,.dur-row{grid-template-columns:1fr}
+  .track-grid{grid-template-columns:1fr 1fr}
 }
 
 /* ── APPLY PAGE SPECIFIC ── */
@@ -188,11 +190,6 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
 .pg-sticky-footer{position:fixed;bottom:0;left:0;right:0;z-index:200;padding:.75rem 1rem 1.25rem;background:linear-gradient(to top,rgba(10,15,13,0.98) 60%,transparent);pointer-events:none}
 .pg-sticky-footer *{pointer-events:auto}
 .pg-sticky-inner{max-width:780px;margin:0 auto}
-/* Mobile */
-@media(max-width:480px){
-  .gets-grid,.track-grid,.dur-row{grid-template-columns:1fr}
-  .track-grid{grid-template-columns:1fr 1fr}
-}
 </style>
 </head>
 <body>
@@ -265,25 +262,25 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
 
       <div class="pg-section-label"><i class="fas fa-layer-group"></i> Choose Your Track <span class="req">*</span></div>
       <div class="track-grid">
-        <div class="track-opt" data-val="Translation" data-track="translation"><i class="fas fa-language"></i><span>Translation</span></div>
-        <div class="track-opt" data-val="Content Creation" data-track="content"><i class="fas fa-pen-nib"></i><span>Content Creation</span></div>
-        <div class="track-opt" data-val="Digital Marketing" data-track="marketing"><i class="fas fa-bullhorn"></i><span>Digital Marketing</span></div>
-        <div class="track-opt" data-val="Digital Education" data-track="education"><i class="fas fa-chalkboard-teacher"></i><span>Digital Education</span></div>
-        <div class="track-opt" data-val="IT / Web Dev" data-track="webdev"><i class="fas fa-code"></i><span>IT / Web Dev</span></div>
-        <div class="track-opt" data-val="Arabic Studies" data-track="arabic"><i class="fas fa-book-open"></i><span>Arabic Studies</span></div>
-        <div class="track-opt" data-val="Islamic History" data-track="history"><i class="fas fa-mosque"></i><span>Islamic History</span></div>
-        <div class="track-opt" data-val="Not sure yet" data-track="unsure"><i class="fas fa-question-circle"></i><span>Not Sure Yet</span></div>
+        <div class="track-opt" data-val="Translation" data-track="translation" onclick="pickTrack(this)"><i class="fas fa-language"></i><span>Translation</span></div>
+        <div class="track-opt" data-val="Content Creation" data-track="content" onclick="pickTrack(this)"><i class="fas fa-pen-nib"></i><span>Content Creation</span></div>
+        <div class="track-opt" data-val="Digital Marketing" data-track="marketing" onclick="pickTrack(this)"><i class="fas fa-bullhorn"></i><span>Digital Marketing</span></div>
+        <div class="track-opt" data-val="Digital Education" data-track="education" onclick="pickTrack(this)"><i class="fas fa-chalkboard-teacher"></i><span>Digital Education</span></div>
+        <div class="track-opt" data-val="IT / Web Dev" data-track="webdev" onclick="pickTrack(this)"><i class="fas fa-code"></i><span>IT / Web Dev</span></div>
+        <div class="track-opt" data-val="Arabic Studies" data-track="arabic" onclick="pickTrack(this)"><i class="fas fa-book-open"></i><span>Arabic Studies</span></div>
+        <div class="track-opt" data-val="Islamic History" data-track="history" onclick="pickTrack(this)"><i class="fas fa-mosque"></i><span>Islamic History</span></div>
+        <div class="track-opt" data-val="Not sure yet" data-track="unsure" onclick="pickTrack(this)"><i class="fas fa-question-circle"></i><span>Not Sure Yet</span></div>
       </div>
       <input type="hidden" id="f-track">
 
       <div class="pg-section-label" style="margin-top:1.5rem"><i class="fas fa-clock"></i> Duration &amp; Credits <span class="req">*</span></div>
       <div class="dur-row">
-        <div class="dur-opt" data-val="60 Hours (2 Credits)" data-dur="60">
+        <div class="dur-opt" data-val="60 Hours (2 Credits)" data-dur="60" onclick="pickDur(this)">
           <div class="dur-h">60h</div>
           <div class="dur-credits">2 Academic Credits</div>
           <div class="dur-desc">~12 working days &middot; 5 hrs/day</div>
         </div>
-        <div class="dur-opt" data-val="120 Hours (4 Credits)" data-dur="120">
+        <div class="dur-opt" data-val="120 Hours (4 Credits)" data-dur="120" onclick="pickDur(this)">
           <div class="dur-h">120h</div>
           <div class="dur-credits">4 Academic Credits</div>
           <div class="dur-desc">~24 working days &middot; full programme</div>
@@ -412,7 +409,7 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
 
 <div class="pg-sticky-footer" id="pg-sticky-footer">
   <div class="pg-sticky-inner">
-    <button class="btn-primary" id="submit-btn">
+    <button class="btn-primary" id="submit-btn" onclick="submitForm()">
       <i class="fas fa-lock"></i> Proceed to Secure Payment &mdash; &#x20b9;999
     </button>
     <p style="font-size:.68rem;color:var(--text-lo);text-align:center;margin-top:.5rem;display:flex;align-items:center;justify-content:center;gap:.35rem">
@@ -424,66 +421,32 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
 <script>
 /* ══════════════════════════════════════════════════════════════════════════
    PEREGRINE INTERNSHIP APPLICATION - PERFECTLY ALIGNED WITH BACKEND v2.1
-   ══════════════════════════════════════════════════════════════════════════
-   
-   📌 CRITICAL CONFIGURATION - UPDATE BEFORE DEPLOYING:
-   
-   1. SHEET_URL: Your Registration Script Web App URL (v2.1-LMS-Integrated)
-      ⚠️ MUST UPDATE: Replace with your actual deployed script URL
-      Format: https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec
-      
-   2. PAYMENT_AMOUNT: Currently ₹999 (production)
-      Testing: Change to 100 (₹1)
-      Production: Keep at 99900 (₹999)
-   
    ══════════════════════════════════════════════════════════════════════════ */
 
-var SHEET_URL  = "https://script.google.com/macros/s/AKfycbytz9mtPJjPNzRwHsufMihy4Cpp4k-dh0KQh2X2MpN5GO-u-TYwDoIQTd03-k743Zuu/exec"; // ⚠️ UPDATE THIS!
+var SHEET_URL  = "https://script.google.com/macros/s/AKfycbytz9mtPJjPNzRwHsufMihy4Cpp4k-dh0KQh2X2MpN5GO-u-TYwDoIQTd03-k743Zuu/exec"; 
 var RZP_KEY_ID = "rzp_live_Rw8XR99SIFnT9a"; 
 var PAYMENT_AMOUNT = 100; // ₹999 = 99900 paise (change to 100 for testing)
 
 var selTrack = "", selDuration = "";
 var razorpayInstance = null;
 
-// ══════════════════════════════════════════════════════════════════════════
-//  TRACK & DURATION SELECTION (Mobile-Optimized Touch Support)
-// ══════════════════════════════════════════════════════════════════════════
-
 function pickTrack(el) {
-  document.querySelectorAll(".track-opt").forEach(function(o) {
-    o.classList.remove("active");
-  });
-  
+  document.querySelectorAll(".track-opt").forEach(function(o) { o.classList.remove("active"); });
   el.classList.add("active");
   selTrack = el.getAttribute("data-val");
   document.getElementById("f-track").value = selTrack;
-  
-  // Visual feedback for mobile
   el.style.transform = "scale(0.98)";
-  setTimeout(function() {
-    el.style.transform = "";
-  }, 100);
+  setTimeout(function() { el.style.transform = ""; }, 100);
 }
 
 function pickDur(el) {
-  document.querySelectorAll(".dur-opt").forEach(function(o) {
-    o.classList.remove("active");
-  });
-  
+  document.querySelectorAll(".dur-opt").forEach(function(o) { o.classList.remove("active"); });
   el.classList.add("active");
   selDuration = el.getAttribute("data-val");
   document.getElementById("f-duration").value = selDuration;
-  
-  // Visual feedback for mobile
   el.style.transform = "scale(0.98)";
-  setTimeout(function() {
-    el.style.transform = "";
-  }, 100);
+  setTimeout(function() { el.style.transform = ""; }, 100);
 }
-
-// ══════════════════════════════════════════════════════════════════════════
-//  FORM VALIDATION
-// ══════════════════════════════════════════════════════════════════════════
 
 function validateForm() {
   var msgEl = document.getElementById("form-msg");
@@ -498,18 +461,15 @@ function validateForm() {
     showError(msgEl, "Please fill all required fields and select a track and duration.");
     return false;
   }
-
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     showError(msgEl, "Please enter a valid email address.");
     return false;
   }
-
   var phoneClean = phone.replace(/[\s\-\(\)]/g, "");
   if (!/^(\+91)?[6-9]\d{9}$/.test(phoneClean) && !/^\+[1-9]\d{7,14}$/.test(phoneClean)) {
     showError(msgEl, "Please enter a valid mobile number.");
     return false;
   }
-
   return true;
 }
 
@@ -520,23 +480,16 @@ function showError(msgEl, message) {
   msgEl.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
-// ══════════════════════════════════════════════════════════════════════════
-//  MAIN SUBMIT FUNCTION
-// ══════════════════════════════════════════════════════════════════════════
-
 function submitForm() {
   var btn = document.getElementById("submit-btn");
   var msgEl = document.getElementById("form-msg");
 
-  if (!validateForm()) {
-    return;
-  }
+  if (!validateForm()) return;
 
   msgEl.style.display = "none";
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span>&nbsp; Opening Secure Payment...';
 
-  // Gather form data
   var name = document.getElementById("f-name").value.trim();
   var email = document.getElementById("f-email").value.trim();
   var phone = document.getElementById("f-phone").value.trim().replace(/[\s\-\(\)]/g, "");
@@ -546,22 +499,13 @@ function submitForm() {
   var link = document.getElementById("f-link").value.trim();
   var why = document.getElementById("f-why").value.trim();
 
-  /* ═══════════════════════════════════════════════════════════════════════
-     BACKEND ALIGNMENT: Service field format
-     
-     BEFORE payment: "60 Hours (2 Credits) | Translation" (NO prefix)
-     AFTER payment:  "[INTERNSHIP-CONFIRMED] 60 Hours (2 Credits) | Translation"
-     
-     Backend expects this EXACT format for proper parsing and LMS provisioning
-     ═══════════════════════════════════════════════════════════════════════ */
-
   var appData = {
     organisation: college,
     sector: "Internship Applicant — " + selTrack,
     contact: name,
     email: email,
     phone: phone,
-    service: selDuration + " | " + selTrack,  // Clean format, NO prefix yet
+    service: selDuration + " | " + selTrack,
     roles: "Degree:" + degree + " | Sem:" + sem +
       (link ? " | Portfolio:" + link : "") +
       (why ? " | Why:" + why.slice(0, 200) : "")
@@ -576,10 +520,6 @@ function submitForm() {
     btn.innerHTML = '<i class="fas fa-lock"></i> Proceed to Secure Payment &mdash; &#x20b9;999';
   }
 }
-
-// ══════════════════════════════════════════════════════════════════════════
-//  RAZORPAY PAYMENT HANDLER
-// ══════════════════════════════════════════════════════════════════════════
 
 function openRazorpay(appData, btn, msgEl) {
   var options = {
@@ -597,6 +537,14 @@ function openRazorpay(appData, btn, msgEl) {
       "name": appData.contact,
       "email": appData.email,
       "contact": appData.phone
+    },
+    // ADDED NOTES OBJECT HERE: Securely pass data directly to Razorpay Dashboard
+    "notes": {
+      "name": appData.contact,
+      "email": appData.email,
+      "phone": appData.phone,
+      "college": appData.organisation,
+      "track": selTrack
     },
     "theme": {
       "color": "#0d5e3a"
@@ -637,29 +585,10 @@ function openRazorpay(appData, btn, msgEl) {
   razorpayInstance.open();
 }
 
-// ══════════════════════════════════════════════════════════════════════════
-//  PAYMENT SUCCESS HANDLER
-// ══════════════════════════════════════════════════════════════════════════
-
 function handlePaymentSuccess(paymentId, appData) {
-  /* ═══════════════════════════════════════════════════════════════════════
-     BACKEND ALIGNMENT: Add confirmation prefix ONLY after payment success
-     
-     This creates: "[INTERNSHIP-CONFIRMED] 60 Hours (2 Credits) | Translation"
-     
-     Backend will:
-     1. Detect [INTERNSHIP-CONFIRMED] tag
-     2. Parse track and duration from service field
-     3. Extract PayID from roles field
-     4. Set status = "Confirmed"
-     5. Call Academy LMS API for automatic provisioning
-     6. Send confirmation + LMS welcome emails
-     ═══════════════════════════════════════════════════════════════════════ */
-
   appData.service = "[INTERNSHIP-CONFIRMED] " + appData.service;
   appData.roles = appData.roles + " | PayID:" + paymentId;
 
-  // Send to Registration Script (triggers full backend flow + LMS provisioning)
   fetch(SHEET_URL, {
     method: "POST",
     mode: "no-cors",
@@ -671,14 +600,9 @@ function handlePaymentSuccess(paymentId, appData) {
   })
   .catch(function(error) {
     console.error("Sheet update error:", error);
-    // Still show success since payment went through
     showSuccessView();
   });
 }
-
-// ══════════════════════════════════════════════════════════════════════════
-//  SUCCESS VIEW
-// ══════════════════════════════════════════════════════════════════════════
 
 function showSuccessView() {
   var formCard = document.getElementById("form-card");
@@ -698,43 +622,8 @@ function showSuccessView() {
   }
 }
 
-// ══════════════════════════════════════════════════════════════════════════
-//  EVENT LISTENERS (Mobile-Optimized)
-// ══════════════════════════════════════════════════════════════════════════
-
-document.addEventListener('DOMContentLoaded', function() {
-  // Track selection
-  document.querySelectorAll('.track-opt').forEach(function(el) {
-    el.addEventListener('click', function() { pickTrack(this); });
-    el.addEventListener('touchend', function(e) { 
-      e.preventDefault(); 
-      pickTrack(this); 
-    });
-  });
-
-  // Duration selection
-  document.querySelectorAll('.dur-opt').forEach(function(el) {
-    el.addEventListener('click', function() { pickDur(this); });
-    el.addEventListener('touchend', function(e) { 
-      e.preventDefault(); 
-      pickDur(this); 
-    });
-  });
-
-  // Submit button
-  var submitBtn = document.getElementById('submit-btn');
-  if (submitBtn) {
-    submitBtn.addEventListener('click', submitForm);
-    submitBtn.addEventListener('touchend', function(e) { 
-      e.preventDefault(); 
-      submitForm(); 
-    });
-  }
-});
-
-// ══════════════════════════════════════════════════════════════════════════
-//  SCROLL REVEAL ANIMATION
-// ══════════════════════════════════════════════════════════════════════════
+// NOTE: Removed the redundant 'submitBtn.addEventListener' block that was causing 
+// Razorpay to double-fire and crash on mobile devices.
 
 (function() {
   var els = document.querySelectorAll('.reveal');
