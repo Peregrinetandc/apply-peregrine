@@ -423,7 +423,8 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
    PEREGRINE INTERNSHIP APPLICATION - PERFECTLY ALIGNED WITH BACKEND v2.1
    ══════════════════════════════════════════════════════════════════════════ */
 
-var SHEET_URL  = "https://script.google.com/macros/s/AKfycbxSRpoaDxYeZScZMUna7f12eQmUHkqoJJStEIoeYFlCSpznyFP80dDdM55s1DC3sQO6/exec"; 
+// UPDATED: Using the newly provided Google Apps Script URL
+var SHEET_URL  = "https://script.google.com/macros/s/AKfycbzLmugtlqkeOsJOuVPyi-EUE7bCXBsO82pgbaXTOYbyqo_XHkSDmVUM4OHE05xW6c5K/exec"; 
 var RZP_KEY_ID = "rzp_live_Rw8XR99SIFnT9a"; 
 var PAYMENT_AMOUNT = 100; // ₹999 = 99900 paise (change to 100 for testing)
 
@@ -538,7 +539,6 @@ function openRazorpay(appData, btn, msgEl) {
       "email": appData.email,
       "contact": appData.phone
     },
-    // ADDED NOTES OBJECT HERE: Securely pass data directly to Razorpay Dashboard
     "notes": {
       "name": appData.contact,
       "email": appData.email,
@@ -589,10 +589,10 @@ function handlePaymentSuccess(paymentId, appData) {
   appData.service = "[INTERNSHIP-CONFIRMED] " + appData.service;
   appData.roles = appData.roles + " | PayID:" + paymentId;
 
+  // UPDATED: fetch using text/plain to bypass Google's strict CORS blocks
   fetch(SHEET_URL, {
     method: "POST",
-    mode: "no-cors",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "text/plain;charset=utf-8" }, 
     body: JSON.stringify(appData)
   })
   .then(function() {
@@ -621,9 +621,6 @@ function showSuccessView() {
     }, 150);
   }
 }
-
-// NOTE: Removed the redundant 'submitBtn.addEventListener' block that was causing 
-// Razorpay to double-fire and crash on mobile devices.
 
 (function() {
   var els = document.querySelectorAll('.reveal');
