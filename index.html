@@ -423,10 +423,12 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
    PEREGRINE INTERNSHIP APPLICATION - PERFECTLY ALIGNED WITH BACKEND v2.1
    ══════════════════════════════════════════════════════════════════════════ */
 
-// UPDATED: Using the newly provided Google Apps Script URL
-var SHEET_URL  = "https://script.google.com/macros/s/AKfycbzLmugtlqkeOsJOuVPyi-EUE7bCXBsO82pgbaXTOYbyqo_XHkSDmVUM4OHE05xW6c5K/exec"; 
+// 1. UPDATED: Inserted your brand new script URL here
+var SHEET_URL  = "https://script.google.com/macros/s/AKfycbzgh7Yux1sl3vZljhhthjqNOuSUYPR7-8a2HFLmTLmIqsEKUvdCuzAVUY4g_Or86VkG/exec"; 
+
+// 2. IMPORTANT: Keep this at 100 for testing (₹1), but remember to change to 99900 (₹999) before you go live!
 var RZP_KEY_ID = "rzp_live_Rw8XR99SIFnT9a"; 
-var PAYMENT_AMOUNT = 100; // ₹999 = 99900 paise (change to 100 for testing)
+var PAYMENT_AMOUNT = 100; 
 
 var selTrack = "", selDuration = "";
 var razorpayInstance = null;
@@ -589,9 +591,10 @@ function handlePaymentSuccess(paymentId, appData) {
   appData.service = "[INTERNSHIP-CONFIRMED] " + appData.service;
   appData.roles = appData.roles + " | PayID:" + paymentId;
 
-  // UPDATED: fetch using text/plain to bypass Google's strict CORS blocks
+  // 3. UPDATED: Using 'text/plain' and 'no-cors' to ensure Google doesn't block the data
   fetch(SHEET_URL, {
     method: "POST",
+    mode: "no-cors", 
     headers: { "Content-Type": "text/plain;charset=utf-8" }, 
     body: JSON.stringify(appData)
   })
