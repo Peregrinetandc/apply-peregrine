@@ -306,26 +306,16 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
 
       <div class="pg-section-label"><i class="fas fa-university"></i> Academic Details</div>
       
-      <div class="pg-group">
+     <div class="pg-group">
         <label>College / Institution <span class="req">*</span></label>
-        <select id="f-college" class="pg-input">
-          <option value="">Select your college...</option>
-          <optgroup label="Official MOU Partners">
-            <option value="MES Mampad College (Autonomous)">MES Mampad College (Autonomous)</option>
-            <option value="MES Kalladi College, Mannarkkad">MES Kalladi College, Mannarkkad</option>
-          </optgroup>
-          <optgroup label="Other Institutions">
-            <option value="Other College (Calicut University)">Other (Calicut University Affiliated)</option>
-            <option value="Other College (Kerala/MG/Kannur)">Other (Kerala / MG / Kannur University)</option>
-          </optgroup>
-        </select>
+        <input id="f-college" type="text" class="pg-input" placeholder="Type your college name">
       </div>
 
-      <div class="pg-form-row">
-        <div class="pg-group">
+      <div class="pg-group">
           <label>Degree Programme <span class="req">*</span></label>
           <select id="f-degree" class="pg-input">
             <option value="">Select your degree...</option>
+            
             <optgroup label="Arts & Humanities (BA)">
               <option value="BA Arabic Language & Literature">BA Arabic Language & Literature</option>
               <option value="BA English Language & Literature">BA English Language & Literature</option>
@@ -334,14 +324,38 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
               <option value="BA Sociology / Philosophy">BA Sociology / Philosophy</option>
               <option value="BA Malayalam / Hindi">BA Malayalam / Hindi</option>
             </optgroup>
+            
+            <optgroup label="Science (BSc)">
+              <option value="BSc Physics / Chemistry">BSc Physics / Chemistry</option>
+              <option value="BSc Mathematics / Statistics">BSc Mathematics / Statistics</option>
+              <option value="BSc Botany / Zoology / Biology">BSc Botany / Zoology / Biology</option>
+              <option value="BSc Computer Science / IT">BSc Computer Science / IT</option>
+              <option value="BSc Psychology">BSc Psychology</option>
+              <option value="BSc (Other Specializations)">BSc (Other Specializations)</option>
+            </optgroup>
+            
             <optgroup label="Commerce & Management">
               <option value="BCom (All Specializations)">BCom (All Specializations)</option>
               <option value="BBA / BCA">BBA / BCA</option>
+              <option value="BMS / BBM (Management)">BMS / BBM (Management)</option>
             </optgroup>
-            <optgroup label="Other">
+
+            <optgroup label="Education & Social Work">
+              <option value="B.Ed / B.El.Ed (Education)">B.Ed / B.El.Ed (Education)</option>
+              <option value="BSW (Social Work)">BSW (Social Work)</option>
+            </optgroup>
+
+            <optgroup label="Professional & Creative">
+              <option value="LLB / Integrated Law">LLB / Integrated Law</option>
+              <option value="BJMC / Mass Communication">BJMC / Mass Communication</option>
+              <option value="BHM (Hotel Management)">BHM (Hotel Management)</option>
+              <option value="BFA / B.Des (Fine Arts & Design)">BFA / B.Des (Fine Arts & Design)</option>
+            </optgroup>
+            
+            <optgroup label="Other Programmes">
               <option value="B.Voc Programmes">B.Voc Programmes</option>
-              <option value="BSc (Science Programmes)">BSc (Science Programmes)</option>
               <option value="PG / Masters Programme">PG / Masters Programme</option>
+              <option value="Other Degree Programme">Other Degree Programme</option>
             </optgroup>
           </select>
         </div>
@@ -349,9 +363,9 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
           <label>Current Semester <span class="req">*</span></label>
           <select id="f-semester" class="pg-input">
             <option value="">Select semester</option>
+            <option value="2nd Semester">2nd Semester (FYUGP 2-Credit)</option>
             <option value="4th Semester">4th Semester (FYUGP 2-Credit)</option>
-            <option value="6th Semester">6th Semester</option>
-            <option value="PG / Masters">PG / Masters</option>
+            <option value="Others">Others</option>
           </select>
         </div>
       </div>
