@@ -190,6 +190,85 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
 .pg-sticky-footer{position:fixed;bottom:0;left:0;right:0;z-index:200;padding:.75rem 1rem 1.25rem;background:linear-gradient(to top,rgba(10,15,13,0.98) 60%,transparent);pointer-events:none}
 .pg-sticky-footer *{pointer-events:auto}
 .pg-sticky-inner{max-width:780px;margin:0 auto}
+  /* ── WHATSAPP COMMUNITY CARD ── */
+.wa-join-card {
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.1) 0%, rgba(13, 94, 58, 0.2) 100%);
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  border-radius: var(--r-lg);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: left;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+.wa-qr-box {
+  width: 130px;
+  height: 130px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid rgba(37, 211, 102, 0.5);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.wa-qr-img {
+  width: 260%;
+  height: auto;
+  object-fit: cover;
+  object-position: center 52%; 
+}
+.wa-info h4 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: #4ade80;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+}
+.wa-info p {
+  font-size: 0.85rem;
+  color: var(--text-hi);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+.wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #25D366;
+  color: #0a0f0d;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.wa-btn:hover {
+  background: #21bd5c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(37, 211, 102, 0.3);
+}
+
+@media(max-width: 576px) {
+  .wa-join-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.25rem;
+  }
+  .wa-info h4 {
+    justify-content: center;
+  }
+}
 </style>
 </head>
 <body>
@@ -386,9 +465,34 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
   <div class="success-view reveal" id="success-view">
     <div style="font-size:3rem">&#x2705;</div>
     <h3>Application Received!</h3>
-    <p>Thank you for applying to the <strong>Peregrine Professional Apprenticeship</strong>.</p>
+    <p>Thank you for applying to the <strong>Peregrine Professional Internship</strong>.</p>
     <div class="success-pill">&#x2705; Payment confirmed &nbsp;&middot;&nbsp; Batch confirmation within 24 hours</div>
-    <p style="font-size:.82rem">Check your email for confirmation (including LMS login details) and WhatsApp for batch assignment.</p>
+    <div class="success-view reveal" id="success-view">
+    <div style="font-size:3rem">&#x2705;</div>
+    <h3>Application Received!</h3>
+    <p>Thank you for applying to the <strong>Peregrine Internship Program</strong>.</p>
+    <div class="success-pill">&#x2705; Payment confirmed &nbsp;&middot;&nbsp; Batch confirmation within 24 hours</div>
+    
+   <div class="success-view reveal" id="success-view">
+    <div style="font-size:3rem">&#x2705;</div>
+    <h3>Application Received!</h3>
+    <p>Thank you for applying to the <strong>Peregrine Internship Program</strong>.</p>
+    <div class="success-pill">&#x2705; Payment confirmed &nbsp;&middot;&nbsp; Batch confirmation within 24 hours</div>
+    
+    <div class="wa-join-card">
+      <div class="wa-qr-box">
+        <img src="https://raw.githubusercontent.com/Peregrinetandc/summer2026-register/main/whatsapp-community_QR.JPG" alt="WhatsApp Community QR" class="wa-qr-img">
+      </div>
+      <div class="wa-info">
+        <h4><i class="fab fa-whatsapp"></i> Join Our Community</h4>
+        <p>Scan the QR code or tap the button below to join the official Peregrine Internship WhatsApp group for immediate updates, schedule announcements, and mentor communications.</p>
+        <a href="https://chat.whatsapp.com/De4Rxz7EIaA6ISMAWW3js6" target="_blank" class="wa-btn">
+          <i class="fab fa-whatsapp" style="font-size: 1.1rem;"></i> Tap to Join Group
+        </a>
+      </div>
+    </div>
+
+    <p style="font-size:.82rem">Check your email for confirmation (including LMS login details) and WhatsApp for your batch assignment.</p>
     <div class="next-steps">
       <h4>What happens next</h4>
       <div class="next-item"><div class="next-num">1</div><p><strong>Email Confirmation</strong> — Instant payment receipt + LMS access credentials sent to your email.</p></div>
@@ -397,12 +501,10 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
       <div class="next-item"><div class="next-num">4</div><p><strong>Programme Begins</strong> — Attend orientation, meet your mentor, start Week 1 tasks.</p></div>
     </div>
     <p style="font-size:.8rem;color:var(--text-lo);border-top:1px solid rgba(255,255,255,0.07);padding-top:1rem;margin-top:1rem">
-      Questions? <a href="https://wa.me/918907887071" style="color:var(--gold)">+91 89078 87071</a> &nbsp;&middot;&nbsp;
-      <a href="https://www.peregrinehub.com/home" target="_blank" style="color:var(--gold)">PeregrineHub.com</a>
+      Questions? <a href="https://wa.me/917012756374" style="color:var(--gold)">+91 70127 56374</a> &nbsp;&middot;&nbsp;
+      <a href="mailto:support@peregrine-io.com" style="color:var(--gold)">support@peregrine-io.com</a>
     </p>
   </div>
-
-</div>
 
 <footer class="site-footer" role="contentinfo">
   <div class="footer-inner">
