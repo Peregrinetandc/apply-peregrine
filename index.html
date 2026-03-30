@@ -297,7 +297,7 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
   <div style="max-width:680px;margin:0 auto">
     <p class="apply-kicker"><i class="fas fa-graduation-cap"></i> FYUGP 4th Semester &middot; 2026</p>
     <h1>Apply for the<br><em>Peregrine Internship</em></h1>
-    <p>A <strong>120-hour, credit-eligible</strong> programme with real project work, a professional portfolio, and a Letter of Recommendation. CUFYUGP 2024 compliant — accepted by all Kerala universities under Calicut University.</p>
+    <p>A <strong>120/60-hour, credit-eligible</strong> programme with real project work, a professional portfolio, and a Letter of Recommendation. CUFYUGP 2024 compliant — accepted by all Kerala universities under Calicut University.</p>
     <div class="perk-pills">
       <div class="perk-pill"><i class="fas fa-certificate"></i> Certificate</div>
       <div class="perk-pill"><i class="fas fa-folder-open"></i> Portfolio</div>
@@ -311,7 +311,7 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
 
 <div class="stats-band">
   <div class="stats-inner">
-    <div class="stat-cell"><div class="stat-n">120h</div><div class="stat-l">Total hours</div></div>
+    <div class="stat-cell"><div class="stat-n">120/60h</div><div class="stat-l">Total hours</div></div>
     <div class="stat-cell"><div class="stat-n">&#x20b9;999</div><div class="stat-l">Programme fee</div></div>
     <div class="stat-cell"><div class="stat-n">2–4</div><div class="stat-l">Credits</div></div>
     <div class="stat-cell"><div class="stat-n">May 25</div><div class="stat-l">Deadline</div></div>
@@ -512,7 +512,7 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
 <div class="pg-sticky-footer" id="pg-sticky-footer">
   <div class="pg-sticky-inner">
     <button class="btn-primary" id="submit-btn" onclick="submitForm()">
-      <i class="fas fa-lock"></i> Proceed to Secure Payment &mdash; &#x20b9;999
+      <i class="fas fa-lock"></i>Pay now &mdash; &#x20b9;999
     </button>
     <p style="font-size:.68rem;color:var(--text-lo);text-align:center;margin-top:.5rem;display:flex;align-items:center;justify-content:center;gap:.35rem">
       <i class="fas fa-shield-alt" style="color:var(--gold)"></i> Secured by Razorpay &nbsp;&middot;&nbsp; UPI, Cards, Net Banking accepted
@@ -622,7 +622,7 @@ function submitForm() {
     console.error("Razorpay error:", error);
     showError(msgEl, "Payment gateway error. Please try again or contact support.");
     btn.disabled = false;
-    btn.innerHTML = '<i class="fas fa-lock"></i> Proceed to Secure Payment &mdash; &#x20b9;999';
+    btn.innerHTML = '<i class="fas fa-lock"></i>Pay now &mdash; &#x20b9;999';
   }
 }
 
@@ -656,7 +656,7 @@ function openRazorpay(appData, btn, msgEl) {
     "modal": {
       "ondismiss": function() {
         btn.disabled = false;
-        btn.innerHTML = '<i class="fas fa-lock"></i> Proceed to Secure Payment &mdash; &#x20b9;999';
+        btn.innerHTML = '<i class="fas fa-lock"></i>Pay now &mdash; &#x20b9;999';
         showError(msgEl, "Payment was cancelled. Your application was not submitted.");
       },
       "escape": true,
@@ -675,7 +675,7 @@ function openRazorpay(appData, btn, msgEl) {
   razorpayInstance.on('payment.failed', function(response) {
     console.error("Payment failed:", response.error);
     btn.disabled = false;
-    btn.innerHTML = '<i class="fas fa-lock"></i> Proceed to Secure Payment &mdash; &#x20b9;999';
+    btn.innerHTML = '<i class="fas fa-lock"></i>Pay now &mdash; &#x20b9;999';
     
     var errorMsg = "Payment failed. ";
     if (response.error.description) {
