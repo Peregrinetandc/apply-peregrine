@@ -489,7 +489,7 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
     </div>
     <p style="font-size:.8rem;color:var(--text-lo);border-top:1px solid rgba(255,255,255,0.07);padding-top:1rem;margin-top:1rem">
       Questions? <a href="https://wa.me/917012756374" style="color:var(--gold)">+91 70127 56374</a> &nbsp;&middot;&nbsp;
-      <a href="/cdn-cgi/l/email-protection#88fbfdf8f8e7fafcc8f8edfaedeffae1e6eda5e1e7a6ebe7e5" style="color:var(--gold)"><span class="__cf_email__" data-cfemail="f0838580809f8284b0809582959782999e95dd999fde939f9d">[email&#160;protected]</span></a>
+      <a href="mailto:support@peregrine-io.com" style="color:var(--gold)">support@peregrine-io.com</a>
     </p>
   </div>
 <footer class="site-footer" role="contentinfo">
@@ -520,7 +520,7 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ══════════════════════════════════════════════════════════════════════════
    PEREGRINE INTERNSHIP APPLICATION - PERFECTLY ALIGNED WITH BACKEND v2.1
    ══════════════════════════════════════════════════════════════════════════ */
@@ -591,6 +591,11 @@ function submitForm() {
 
   if (!validateForm()) return;
 
+  // Debug override: ₹1 (100 paise) for test email only
+  if (email.toLowerCase() === "peregrine.ptc@gmail.com") {
+    PAYMENT_AMOUNT = 100;
+  }
+
   msgEl.style.display = "none";
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span>&nbsp; Opening Secure Payment...';
@@ -615,11 +620,6 @@ function submitForm() {
       (link ? " | Portfolio:" + link : "") +
       (why ? " | Why:" + why.slice(0, 200) : "")
   };
-
-  // Debug override: ₹1 (100 paise) for test email only
-  if (email.toLowerCase() === "peregrine.ptc@gmail.com") {
-    PAYMENT_AMOUNT = 100;
-  }
 
   try {
     openRazorpay(appData, btn, msgEl);
@@ -739,4 +739,15 @@ function showSuccessView() {
     return;
   }
   var io = new IntersectionObserver(function(entries) {
-   
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.07 });
+  els.forEach(function(e) { io.observe(e); });
+})();
+</script>
+</body>
+</html>
