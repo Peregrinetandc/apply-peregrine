@@ -591,10 +591,7 @@ function submitForm() {
 
   if (!validateForm()) return;
 
-  // Debug override: ₹1 (100 paise) for test email only
-  if (email.toLowerCase() === "peregrine.ptc@gmail.com") {
-    PAYMENT_AMOUNT = 100;
-  }
+
 
   msgEl.style.display = "none";
   btn.disabled = true;
@@ -608,6 +605,11 @@ function submitForm() {
   var sem = document.getElementById("f-semester").value;
   var link = document.getElementById("f-link").value.trim();
   var why = document.getElementById("f-why").value.trim();
+
+    // Debug override: ₹1 (100 paise) for test email only
+  if (email.toLowerCase() === "peregrine.ptc@gmail.com") {
+    PAYMENT_AMOUNT = 100;
+  }
 
   var appData = {
     organisation: college,
