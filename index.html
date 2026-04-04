@@ -100,6 +100,31 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(13,94,58,0.55)}
 .btn-primary:active{transform:scale(.97)}
 .btn-primary:disabled{opacity:.35;cursor:not-allowed;transform:none}
+/* Sticky pay — discount display */
+.btn-price-wrap{display:inline-flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.35rem .6rem}
+.btn-price-old{font-size:.82em;font-weight:500;color:rgba(242,237,228,0.45);text-decoration:line-through;text-decoration-thickness:1px}
+.btn-price-new{font-size:1.05em;font-weight:700;color:var(--gold-2);letter-spacing:.02em}
+/* Pay preview modal */
+.pay-preview-overlay{position:fixed;inset:0;z-index:400;background:rgba(0,0,0,0.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:1.25rem;animation:fadeIn .25s ease}
+.pay-preview-overlay.is-open{display:flex}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.pay-preview-box{position:relative;width:100%;max-width:420px;background:var(--ink-card);border:1px solid var(--glass-bd);border-radius:var(--r-lg);padding:1.75rem 1.5rem 1.5rem;box-shadow:0 24px 64px rgba(0,0,0,.55)}
+.pay-preview-close{position:absolute;top:.75rem;right:.75rem;width:36px;height:36px;border:none;border-radius:var(--r-sm);background:rgba(255,255,255,0.06);color:var(--text-mid);cursor:pointer;font-size:1.25rem;line-height:1;transition:background .2s,color .2s}
+.pay-preview-close:hover{background:rgba(255,255,255,0.1);color:var(--text-hi)}
+.pay-preview-box h3{font-family:var(--font-display);font-size:1.35rem;font-weight:700;color:var(--text-hi);margin-bottom:1rem;padding-right:2rem}
+.pay-preview-summary{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:var(--r-md);padding:1rem 1.125rem;margin-bottom:1.25rem;font-size:.85rem;line-height:1.65;color:var(--text-mid)}
+.pay-preview-summary strong{color:var(--text-hi);font-weight:600}
+.pay-preview-summary .pv-row{display:flex;justify-content:space-between;gap:1rem;margin-bottom:.5rem;flex-wrap:wrap}
+.pay-preview-summary .pv-row:last-child{margin-bottom:0}
+.pay-preview-fee{margin-top:.75rem;padding-top:.75rem;border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.pay-preview-fee .was{color:var(--text-lo);text-decoration:line-through;font-size:.9rem}
+.pay-preview-fee .now{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--gold)}
+.pay-preview-check{display:flex;align-items:flex-start;gap:.65rem;margin-bottom:1.25rem;cursor:pointer;font-size:.8rem;line-height:1.5;color:var(--text-mid);user-select:none}
+.pay-preview-check input{flex-shrink:0;width:18px;height:18px;margin-top:2px;accent-color:var(--forest)}
+#preview-pay-btn{transition:opacity .25s,transform .25s var(--ease-out),box-shadow .25s}
+#preview-pay-btn:disabled{opacity:.42;filter:grayscale(0.25);cursor:not-allowed;transform:none;box-shadow:none}
+#preview-pay-btn:not(:disabled){opacity:1;cursor:pointer}
+#preview-pay-btn.is-ready:not(:disabled){box-shadow:0 0 0 2px rgba(201,145,58,0.45),0 12px 36px rgba(13,94,58,0.45);transform:translateY(-1px)}
 /* Spinner */
 .spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,0.3);border-top-color:white;border-radius:50%;animation:spin .7s linear infinite;display:inline-block}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -312,7 +337,7 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
 <div class="stats-band">
   <div class="stats-inner">
     <div class="stat-cell"><div class="stat-n">120/60h</div><div class="stat-l">Total hours</div></div>
-    <div class="stat-cell"><div class="stat-n">&#x20b9;999</div><div class="stat-l">Programme fee</div></div>
+    <div class="stat-cell"><div class="stat-n" style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:.85rem;text-decoration:line-through;opacity:.55;color:var(--text-lo)">&#x20b9;4,999</span><span>&#x20b9;999</span></div><div class="stat-l">Programme fee</div></div>
     <div class="stat-cell"><div class="stat-n">2–4</div><div class="stat-l">Credits</div></div>
     <div class="stat-cell"><div class="stat-n">May 25</div><div class="stat-l">Deadline</div></div>
   </div>
@@ -511,12 +536,32 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
 
 <div class="pg-sticky-footer" id="pg-sticky-footer">
   <div class="pg-sticky-inner">
-    <button class="btn-primary" id="submit-btn" onclick="submitForm()">
-      <i class="fas fa-lock"></i>Pay Now &mdash; &#x20b9;999
+    <button type="button" class="btn-primary" id="submit-btn" onclick="submitForm()">
+      <span class="btn-price-wrap">
+        <i class="fas fa-lock" aria-hidden="true"></i>
+        <span>Pay Now</span>
+        <span class="btn-price-old" aria-hidden="true">&#x20b9;4,999</span>
+        <span class="btn-price-new">&#x20b9;999</span>
+      </span>
     </button>
     <p style="font-size:.68rem;color:var(--text-lo);text-align:center;margin-top:.5rem;display:flex;align-items:center;justify-content:center;gap:.35rem">
       <i class="fas fa-shield-alt" style="color:var(--gold)"></i> Secured by Razorpay &nbsp;&middot;&nbsp; UPI, Cards, Net Banking accepted
     </p>
+  </div>
+</div>
+
+<div id="pay-preview-overlay" class="pay-preview-overlay" aria-hidden="true">
+  <div class="pay-preview-box" role="dialog" aria-modal="true" aria-labelledby="pay-preview-title">
+    <button type="button" class="pay-preview-close" onclick="closePayPreview()" aria-label="Close preview">&times;</button>
+    <h3 id="pay-preview-title">Review &amp; confirm payment</h3>
+    <div class="pay-preview-summary" id="pay-preview-summary"></div>
+    <label class="pay-preview-check" for="pay-confirm-check">
+      <input type="checkbox" id="pay-confirm-check" autocomplete="off">
+      <span>I confirm the details above are correct and I agree to proceed with the secure payment for the Peregrine Internship programme.</span>
+    </label>
+    <button type="button" class="btn-primary" id="preview-pay-btn" disabled onclick="executePayment()">
+      <i class="fas fa-lock" aria-hidden="true"></i> Pay &#x20b9;999
+    </button>
   </div>
 </div>
 
@@ -530,10 +575,87 @@ var SHEET_URL  = "https://script.google.com/macros/s/AKfycbx50x5W3ePu8jTZLdvjbBt
 
 // 2. IMPORTANT: Keep this at 100 for testing (₹1), but remember to change to 99900 (₹999) before you go live!
 var RZP_KEY_ID = "rzp_live_Rw8XR99SIFnT9a"; 
-var PAYMENT_AMOUNT = 99900; 
+var PAYMENT_AMOUNT_DEFAULT = 99900;
+var PAYMENT_AMOUNT = PAYMENT_AMOUNT_DEFAULT;
+
+/** HTML for the sticky footer pay button (discount UI). */
+function stickyPayButtonHTML() {
+  return '<span class="btn-price-wrap"><i class="fas fa-lock" aria-hidden="true"></i> <span>Pay Now</span> <span class="btn-price-old" aria-hidden="true">&#x20b9;4,999</span> <span class="btn-price-new">&#x20b9;999</span></span>';
+}
 
 var selTrack = "", selDuration = "";
 var razorpayInstance = null;
+
+document.addEventListener("DOMContentLoaded", function() {
+  var chk = document.getElementById("pay-confirm-check");
+  var previewBtn = document.getElementById("preview-pay-btn");
+  if (chk && previewBtn) {
+    chk.addEventListener("change", function() {
+      previewBtn.disabled = !chk.checked;
+      previewBtn.classList.toggle("is-ready", chk.checked);
+    });
+  }
+  var payOverlay = document.getElementById("pay-preview-overlay");
+  if (payOverlay) {
+    payOverlay.addEventListener("click", function(e) {
+      if (e.target === payOverlay) closePayPreview();
+    });
+  }
+  document.addEventListener("keydown", function(e) {
+    if (e.key !== "Escape") return;
+    var o = document.getElementById("pay-preview-overlay");
+    if (o && o.classList.contains("is-open")) closePayPreview();
+  });
+});
+
+function closePayPreview() {
+  var overlay = document.getElementById("pay-preview-overlay");
+  if (!overlay) return;
+  overlay.classList.remove("is-open");
+  overlay.setAttribute("aria-hidden", "true");
+  var chk = document.getElementById("pay-confirm-check");
+  var previewBtn = document.getElementById("preview-pay-btn");
+  if (chk) chk.checked = false;
+  if (previewBtn) {
+    previewBtn.disabled = true;
+    previewBtn.classList.remove("is-ready");
+  }
+}
+
+function openPayPreview() {
+  var name = document.getElementById("f-name").value.trim();
+  var email = document.getElementById("f-email").value.trim();
+  var summaryEl = document.getElementById("pay-preview-summary");
+  var overlay = document.getElementById("pay-preview-overlay");
+  if (!summaryEl || !overlay) return;
+
+  summaryEl.innerHTML =
+    "<div class=\"pv-row\"><span>Applicant</span><strong>" + escapeHtml(name) + "</strong></div>" +
+    "<div class=\"pv-row\"><span>Email</span><strong>" + escapeHtml(email) + "</strong></div>" +
+    "<div class=\"pv-row\"><span>Track</span><strong>" + escapeHtml(selTrack) + "</strong></div>" +
+    "<div class=\"pv-row\"><span>Duration</span><strong>" + escapeHtml(selDuration) + "</strong></div>" +
+    "<div class=\"pay-preview-fee\"><span>Programme fee</span><span><span class=\"was\">&#x20b9;4,999</span> &nbsp;<span class=\"now\">&#x20b9;999</span></span></div>";
+
+  var chk = document.getElementById("pay-confirm-check");
+  var previewBtn = document.getElementById("preview-pay-btn");
+  if (chk) chk.checked = false;
+  if (previewBtn) {
+    previewBtn.disabled = true;
+    previewBtn.classList.remove("is-ready");
+  }
+
+  overlay.classList.add("is-open");
+  overlay.setAttribute("aria-hidden", "false");
+}
+
+function escapeHtml(s) {
+  if (!s) return "";
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
 
 function pickTrack(el) {
   document.querySelectorAll(".track-opt").forEach(function(o) { o.classList.remove("active"); });
@@ -586,14 +708,27 @@ function showError(msgEl, message) {
 }
 
 function submitForm() {
+  var msgEl = document.getElementById("form-msg");
+  if (!validateForm()) return;
+  msgEl.style.display = "none";
+  openPayPreview();
+}
+
+function executePayment() {
   var btn = document.getElementById("submit-btn");
   var msgEl = document.getElementById("form-msg");
+  var chk = document.getElementById("pay-confirm-check");
 
-  if (!validateForm()) return;
+  if (!validateForm()) {
+    closePayPreview();
+    return;
+  }
+  if (!chk || !chk.checked) {
+    return;
+  }
 
+  closePayPreview();
 
-
-  msgEl.style.display = "none";
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span>&nbsp; Opening Secure Payment...';
 
@@ -606,7 +741,7 @@ function submitForm() {
   var link = document.getElementById("f-link").value.trim();
   var why = document.getElementById("f-why").value.trim();
 
-    // Debug override: ₹1 (100 paise) for test email only
+  PAYMENT_AMOUNT = PAYMENT_AMOUNT_DEFAULT;
   if (email.toLowerCase() === "peregrine.ptc@gmail.com") {
     PAYMENT_AMOUNT = 100;
   }
@@ -629,7 +764,7 @@ function submitForm() {
     console.error("Razorpay error:", error);
     showError(msgEl, "Payment gateway error. Please try again or contact support.");
     btn.disabled = false;
-    btn.innerHTML = '<i class="fas fa-lock"></i>Pay Now &mdash; &#x20b9;999';
+    btn.innerHTML = stickyPayButtonHTML();
   }
 }
 
@@ -663,7 +798,7 @@ function openRazorpay(appData, btn, msgEl) {
     "modal": {
       "ondismiss": function() {
         btn.disabled = false;
-        btn.innerHTML = '<i class="fas fa-lock"></i>Pay Now &mdash; &#x20b9;999';
+        btn.innerHTML = stickyPayButtonHTML();
         showError(msgEl, "Payment was cancelled. Your application was not submitted.");
       },
       "escape": true,
@@ -682,7 +817,7 @@ function openRazorpay(appData, btn, msgEl) {
   razorpayInstance.on('payment.failed', function(response) {
     console.error("Payment failed:", response.error);
     btn.disabled = false;
-    btn.innerHTML = '<i class="fas fa-lock"></i>Pay Now &mdash; &#x20b9;999';
+    btn.innerHTML = stickyPayButtonHTML();
     
     var errorMsg = "Payment failed. ";
     if (response.error.description) {
