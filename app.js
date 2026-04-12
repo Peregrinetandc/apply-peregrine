@@ -4,7 +4,7 @@
 
 var SHEET_URL  = "https://script.google.com/macros/s/AKfycbx50x5W3ePu8jTZLdvjbBtEHWX8d6lVJStH02s4uetalpJ8x-AoWoX6_WBwfyVEoR-Npw/exec";
 var RZP_KEY_ID = "rzp_live_Rw8XR99SIFnT9a";
-var PAYMENT_AMOUNT_DEFAULT = 99900;
+var PAYMENT_AMOUNT_DEFAULT = 129900;
 var PAYMENT_AMOUNT = PAYMENT_AMOUNT_DEFAULT;
 
 /* ── CENTRE → TRACK CONFIG ───────────────────────────────────────────────
@@ -80,13 +80,19 @@ function openPayPreview() {
   if (!summaryEl || !overlay) return;
 
   summaryEl.innerHTML =
-    "<div class=\"pv-row\"><span>Applicant</span><strong>" + escapeHtml(name) + "</strong></div>" +
-    "<div class=\"pv-row\"><span>Email</span><strong>" + escapeHtml(email) + "</strong></div>" +
-    "<div class=\"pv-row\"><span>Track</span><strong>" + escapeHtml(selTrackCode + " — " + selTrack) + "</strong></div>" +
-    "<div class=\"pv-row\"><span>Centre</span><strong>" + escapeHtml(document.getElementById("f-center").value) + "</strong></div>" +
-    "<div class=\"pv-row\"><span>Duration</span><strong>" + escapeHtml(selDuration) + "</strong></div>" +
-    "<div class=\"pay-preview-fee\"><span>Programme fee</span><span><span class=\"was\">&#x20b9;4,999</span> &nbsp;<span class=\"now\">&#x20b9;999</span></span></div>";
-
+    `<div class="pv-row"><span>Applicant</span><strong>${escapeHtml(name)}</strong></div>` +
+    `<div class="pv-row"><span>Email</span><strong>${escapeHtml(email)}</strong></div>` +
+    `<div class="pv-row"><span>Track</span><strong>${escapeHtml(selTrackCode + " — " + selTrack)}</strong></div>` +
+    `<div class="pv-row"><span>Centre</span><strong>${escapeHtml(document.getElementById("f-center").value)}</strong></div>` +
+    `<div class="pv-row"><span>Duration</span><strong>${escapeHtml(selDuration)}</strong></div>` +
+    
+    // Fee section formatted as rows for better alignment
+    `<div class="pay-preview-fee"><span>Programme fee</span><strong>` +
+        `<span class="was">&#x20b9;4,999</span> ` + 
+        `<span class="now">&#x20b9;999</span>` +
+    `</strong></div>` +
+    
+    `<div class="pv-row"><span>Management fee</span><strong>&#x20b9;300</strong></div>`;
   var chk = document.getElementById("pay-confirm-check");
   var previewBtn = document.getElementById("preview-pay-btn");
   if (chk) chk.checked = false;
